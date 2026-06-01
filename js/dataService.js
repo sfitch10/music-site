@@ -20,14 +20,14 @@ async function _fetchJSON(path) {
 
 async function getMatrix() {
   if (_matrixCache) return _matrixCache;
-  const data = await _fetchJSON('./matrix.json');
+  const data = await _fetchJSON('matrix.json');
   _matrixCache = data;
   return data;
 }
 
 async function getAllAlbums() {
   if (_albumsCache) return _albumsCache;
-  const data = await _fetchJSON('./albums.json');
+  const data = await _fetchJSON('albums.json');
   _albumsCache = data.albums;
   return _albumsCache;
 }
@@ -39,7 +39,7 @@ async function getAlbumById(id) {
 
 async function getScores() {
   if (_scoresCache) return _scoresCache;
-  const data = await _fetchJSON('./scores.json');
+  const data = await _fetchJSON('scores.json');
   _scoresCache = data.scores;
   return _scoresCache;
 }
@@ -67,7 +67,7 @@ async function getAllTimeRankings(limit = 200) {
 
 async function getOnDeckAlbums() {
   if (_onDeckCache) return _onDeckCache;
-  const data = await _fetchJSON('./ondeck.json');
+  const data = await _fetchJSON('ondeck.json');
   _onDeckCache = data.ondeck;
   return _onDeckCache;
 }
@@ -86,7 +86,7 @@ async function getScoredOnDeckAlbums() {
 
 async function getCurrentDebate() {
   if (_debateCache) return _debateCache;
-  const data = await _fetchJSON('./debate.json');
+  const data = await _fetchJSON('debate.json');
   _debateCache = data;
   return _debateCache;
 }
