@@ -1,0 +1,25 @@
+{
+  "current": {
+    "album_id": "drake-honestly-nevermind-2022",
+    "week_of": "2025-06-01",
+    "stage_argument": "Drake's pivot to house and dance music on 'Honestly, Nevermind' landed as a curiosity rather than a statement. Critics found the album too surface-level to justify its ambitions — Drake floats over these tracks like a guest at his own party, never committing to the vulnerability the genre demands. The songwriting is thin, the vocal performances disconnected, and the whole thing feels like a genre tourism exercise rather than genuine artistic evolution. When you compare this to what Beyoncé did with RENAISSANCE a month later — fully inhabiting the same sonic world with care and intention — the gap is obvious. This is an album that sounds good in a car wash and doesn't survive closer listening.",
+    "crowd_argument": "The crowd heard something the critics missed: an artist having fun. After years of calculated rap-Drake, the looseness of 'Honestly, Nevermind' felt like a genuine exhale. The production is legitimately excellent — Virginia Black, Carnage, and Black Coffee delivered tracks that work on dance floors everywhere. Nobody was expecting Drake to reinvent house music; they just wanted to move, and this album delivers that in abundance. Stream counts don't lie — people came back to this one repeatedly. Sometimes a good time is enough, and critics penalizing an album for not being what it wasn't trying to be says more about critical expectations than album quality.",
+    "votes": { "stage": 0, "crowd": 0 }
+  },
+  "archive": [
+    {
+      "album_id": "kanye-west-donda-2021",
+      "week_of": "2025-05-25",
+      "stage_argument": "Donda is an album that tests your patience at every turn — bloated to nearly two hours, riddled with unfinished ideas, and undermined by Kanye's own chaos. Critics heard a project that needed six more months in the studio.",
+      "crowd_argument": "The crowd heard gospel ambition and sonic scope that most artists couldn't dream of. Whatever its flaws, Donda swings for transcendence and sometimes touches it. The crowd showed up.",
+      "votes": { "stage": 847, "crowd": 1203 }
+    },
+    {
+      "album_id": "morgan-wallen-dangerous-2021",
+      "week_of": "2025-05-18",
+      "stage_argument": "Critics heard craft but also formula — a machine-perfect country album that rarely surprises. The controversy surrounding Wallen's public behavior colored critical reception, but even setting that aside, the writing plays it remarkably safe.",
+      "crowd_argument": "The people heard themselves in every track. 'Dangerous' broke streaming records because it captured something real about a specific American experience. Critical distance from that world doesn't make the connection less valid.",
+      "votes": { "stage": 612, "crowd": 2841 }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "ondeck": [
+    {
+      "album_id": "rosalia-lux-2025",
+      "release_date": "2025-05-02",
+      "added_date": "2025-05-02",
+      "outlets_reviewed": 6,
+      "outlets_total": 7
+    },
+    {
+      "album_id": "tyler-the-creator-dont-tap-the-glass-2025",
+      "release_date": "2025-05-23",
+      "added_date": "2025-05-23",
+      "outlets_reviewed": 6,
+      "outlets_total": 7
+    },
+    {
+      "album_id": "sabrina-carpenter-mans-best-friend-2025",
+      "release_date": "2025-05-09",
+      "added_date": "2025-05-09",
+      "outlets_reviewed": 6,
+      "outlets_total": 7
+    },
+    {
+      "album_id": "playboi-carti-music-2025",
+      "release_date": "2025-05-16",
+      "added_date": "2025-05-16",
+      "outlets_reviewed": 6,
+      "outlets_total": 7
+    }
+  ]
+}

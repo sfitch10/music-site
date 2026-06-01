@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Debate — [SITE NAME]</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">[LOGO] <span>[SITE NAME]</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Monthly</a></li>
+        <li><a href="alltime.html">All-Time</a></li>
+        <li><a href="ondeck.html">On Deck</a></li>
+        <li><a href="debate.html">The Debate</a></li>
+        <li><a href="howwescore.html">How We Score</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <header class="debate-hero">
+      <div class="hero-eyebrow">This Week</div>
+      <h1 class="hero-title">The Debate</h1>
+      <p class="hero-subtitle">One album. A real gap. Two sides. You decide.</p>
+    </header>
+
+    <div class="debate-album-info">
+      <div class="debate-album-art">
+        <div class="debate-album-art-placeholder">🎵</div>
+      </div>
+      <div class="debate-album-meta">
+        <h2></h2>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="debate-gap-display"></div>
+
+    <div class="debate-panels">
+      <div class="debate-panel">
+        <div class="debate-panel-title">🎙️ The Stage Says</div>
+        <p class="debate-panel-text stage-argument"></p>
+      </div>
+      <div class="debate-panel">
+        <div class="debate-panel-title">👥 The Crowd Says</div>
+        <p class="debate-panel-text crowd-argument"></p>
+      </div>
+    </div>
+
+    <div class="debate-vote">
+      <button class="vote-btn stage">🎙️ I'm with The Stage</button>
+      <button class="vote-btn crowd">👥 I'm with The Crowd</button>
+    </div>
+
+    <div class="vote-bar-container">
+      <div class="vote-bar">
+        <div class="vote-bar-stage" style="width:50%"></div>
+        <div class="vote-bar-crowd"></div>
+      </div>
+      <div class="vote-bar-labels">
+        <span>🎙️ Stage 50%</span>
+        <span>👥 Crowd 50%</span>
+      </div>
+    </div>
+
+    <!-- Archive -->
+    <div class="debate-archive">
+      <div class="debate-archive-title">Past Debates</div>
+      <div class="archive-grid"></div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>[SITE NAME] — The definitive score for what's hitting right now. &nbsp;|&nbsp; <a href="howwescore.html">How We Score</a></p>
+  </footer>
+
+  <script type="module">
+    import { initDebatePage, initNavToggle } from './ui.js';
+    initNavToggle();
+    initDebatePage();
+  </script>
+
+</body>
+</html>

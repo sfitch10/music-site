@@ -1,0 +1,58 @@
+:root {
+  /* Core Brand */
+  --color-primary: #7B2FBE;
+  --color-primary-bright: #9B4DCA;
+  --color-accent: #00D4FF;
+  --color-accent-warm: #FF6B6B;
+
+  /* Backgrounds */
+  --color-bg-deep: #0A0A0F;
+  --color-bg-surface: #12121A;
+  --color-bg-elevated: #1A1A2E;
+  --color-bg-glass: rgba(123, 47, 190, 0.08);
+
+  /* Text */
+  --color-text-primary: #F0F0F5;
+  --color-text-secondary: #9090A8;
+  --color-text-muted: #555568;
+
+  /* Borders */
+  --color-border: rgba(123, 47, 190, 0.2);
+  --color-border-bright: rgba(0, 212, 255, 0.3);
+
+  /* Tier Colors */
+  --tier-banger: #FF6B2B;
+  --tier-slapper: #FF2D6B;
+  --tier-rotation: #00D4FF;
+  --tier-mid: #9090A8;
+  --tier-deep: #555568;
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows / Glows */
+  --glow-primary: 0 0 40px rgba(123, 47, 190, 0.3);
+  --glow-primary-strong: 0 0 60px rgba(123, 47, 190, 0.5);
+  --glow-accent: 0 0 30px rgba(0, 212, 255, 0.3);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}

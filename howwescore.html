@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Score — [SITE NAME]</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">[LOGO] <span>[SITE NAME]</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Monthly</a></li>
+        <li><a href="alltime.html">All-Time</a></li>
+        <li><a href="ondeck.html">On Deck</a></li>
+        <li><a href="debate.html">The Debate</a></li>
+        <li><a href="howwescore.html">How We Score</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="howwescore-hero">
+    <div class="hero-eyebrow">Methodology</div>
+    <h1 class="hero-title" style="font-size:clamp(1.5rem,4vw,2.5rem)">How We Score</h1>
+    <p class="hero-subtitle">No black boxes. Here's exactly how a number becomes a score.</p>
+  </div>
+
+  <div class="howwescore-content">
+
+    <div class="howwescore-section">
+      <h2>Our Two Scores</h2>
+      <p>Every album on this site receives two independent scores: <strong>The Stage</strong> and <strong>The Crowd</strong>. These are combined into a single number — the Combined Score — that you see on every album card and page.</p>
+      <p>We keep them separate because they measure different things. The Stage measures critical consensus. The Crowd measures real listening behavior. Neither one alone tells the full story.</p>
+    </div>
+
+    <div class="howwescore-section">
+      <h2>🎙️ The Stage</h2>
+      <p>The Stage score comes from professional music critics at established outlets. We pull scores from:</p>
+
+      <div class="outlet-list">
+        <span class="outlet-chip">Pitchfork</span>
+        <span class="outlet-chip">Rolling Stone</span>
+        <span class="outlet-chip">NME</span>
+        <span class="outlet-chip">AllMusic</span>
+        <span class="outlet-chip">The Guardian</span>
+        <span class="outlet-chip">Paste Magazine</span>
+        <span class="outlet-chip">Consequence of Sound</span>
+      </div>
+
+      <p>Each outlet has reviewed thousands of albums and has established critical credibility over years of publication. We normalize their different scoring scales — stars, letter grades, decimals — into a single comparable number so they can be weighted and combined.</p>
+      <p>Not every outlet reviews every album. When an outlet hasn't reviewed an album, we redistribute its weight proportionally across outlets that did. Albums with fewer than three outlet reviews receive a Limited Data flag, indicating the score should be treated with caution.</p>
+    </div>
+
+    <div class="howwescore-section">
+      <h2>👥 The Crowd</h2>
+      <p>The Crowd score reflects how people are actually engaging with an album — through streaming data, chart performance, and the vibe taps you leave on this site.</p>
+      <p>Unlike sites that rely on self-reported user ratings (which are easy to manipulate and don't reflect actual listening), we anchor the crowd score in real listening behavior. Streaming numbers don't lie. Chart weeks don't lie. The vibe taps are a smaller but genuinely human signal layered on top.</p>
+      <p>Streaming data is normalized for time — an album that was released five years ago has had five years to accumulate plays, while something that dropped last month has had 30 days. We account for that so newer albums aren't automatically at a disadvantage.</p>
+    </div>
+
+    <div class="howwescore-section">
+      <h2>The Combined Score</h2>
+      <p>We blend The Stage and The Crowd into a single score. The exact blend depends on which ranking you're looking at:</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin:var(--space-md) 0">
+        <div style="background:var(--color-bg-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-lg)">
+          <div style="font-family:var(--font-display);font-weight:700;margin-bottom:8px">Monthly Rankings</div>
+          <p style="font-size:0.875rem;color:var(--color-text-secondary);margin:0">The Crowd carries slightly more weight. Right now matters — what people are actually listening to today is the signal.</p>
+        </div>
+        <div style="background:var(--color-bg-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-lg)">
+          <div style="font-family:var(--font-display);font-weight:700;margin-bottom:8px">All-Time Rankings</div>
+          <p style="font-size:0.875rem;color:var(--color-text-secondary);margin:0">Critics carry slightly more weight. History has had more time to judge. Critical consensus tends to age better than streaming velocity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="howwescore-section">
+      <h2>Score Tiers</h2>
+      <p>Every Combined Score maps to a tier badge. Tiers are determined by score ranges — there are no arbitrary editorial adjustments. If an album scores in a range, it gets that badge, full stop.</p>
+
+      <div style="display:flex;flex-direction:column;gap:8px;margin:var(--space-md) 0">
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="tier-badge certified_banger">🔥 Certified Banger</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">The top of the pile. Few albums get here.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="tier-badge absolute_slapper">🤘 Absolute Slapper</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">Excellent. Strong critical and crowd reception.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="tier-badge hard_rotation">🎧 Hard Rotation</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">Good. Worth your time.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="tier-badge mid_season">😐 Mid Season</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">Fine. Mixed signals from both sides.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="tier-badge deep_cut">💀 Deep Cut</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">For completionists only.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="howwescore-section">
+      <h2>Gap Badges</h2>
+      <p>Sometimes The Stage and The Crowd disagree significantly. When they do, we surface that disagreement with a Gap Badge — an honest acknowledgment that something interesting is happening.</p>
+
+      <div style="display:flex;flex-direction:column;gap:8px;margin:var(--space-md) 0">
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="gap-badge">👑 People's Champion</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">The crowd loves it. Critics are cold.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="gap-badge">💎 Critics' Darling</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">Critics love it. The crowd is lukewarm.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="gap-badge">🤝 Unanimous</span>
+          <span style="font-size:0.875rem;color:var(--color-text-secondary)">Rare. Both sides agree within 5 points.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="howwescore-section">
+      <h2>On Deck</h2>
+      <p>New albums enter a 30-day evaluation window called On Deck. During this window, the score is still forming — critic reviews are coming in, streaming data is accumulating, chart positions are being established.</p>
+      <p>We show On Deck albums separately from the main catalog with a progress bar indicating how many days remain. After 30 days, the score locks and the album graduates to the main rankings.</p>
+      <p>On Deck scores are real — you can see the early signal forming in real time. We just don't want you to mistake an early score for a settled one.</p>
+    </div>
+
+    <div class="howwescore-section">
+      <h2>What We Don't Do</h2>
+
+      <div class="what-we-dont-item">
+        <p>We don't let labels or artists pay for placement. Score is the only thing that determines ranking position.</p>
+      </div>
+      <div class="what-we-dont-item">
+        <p>We don't adjust scores based on an album's popularity, controversy, or the artist's cultural moment. The math is the math.</p>
+      </div>
+      <div class="what-we-dont-item">
+        <p>We don't remove albums once they're scored. If an album drops in relevance over time, that'll show up in the streaming data — but we don't scrub history.</p>
+      </div>
+      <div class="what-we-dont-item">
+        <p>We don't have user accounts or verified critics. The vibe tap is anonymous and lightweight by design.</p>
+      </div>
+      <div class="what-we-dont-item">
+        <p>The score is the score. We built a system we trust, and we let it run.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>[SITE NAME] — The definitive score for what's hitting right now. &nbsp;|&nbsp; <a href="howwescore.html">How We Score</a></p>
+  </footer>
+
+  <script type="module">
+    import { initNavToggle } from './ui.js';
+    import { setActiveNav } from './router.js';
+    setActiveNav();
+    initNavToggle();
+  </script>
+
+</body>
+</html>
