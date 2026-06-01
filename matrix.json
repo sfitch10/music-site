@@ -1,0 +1,121 @@
+{
+  "_comment": "All weights within a group must sum to 1.0. Change numbers here to adjust scoring. Do not touch scoring.js unless adding new data sources.",
+
+  "crowd_score": {
+    "_comment": "What feeds the Crowd Score. Currently all stubbed — see /api folder for future live connections.",
+    "inputs": {
+      "streaming_data": {
+        "weight": 0.50,
+        "_comment": "Spotify streams normalized for time and catalog size. See /api/spotify.js"
+      },
+      "sales_chart_performance": {
+        "weight": 0.30,
+        "_comment": "Billboard chart weeks and peak position. See /api/billboard.js"
+      },
+      "onsite_vibe_tap": {
+        "weight": 0.20,
+        "_comment": "Anonymous cookie-based on-site rating. Stored in browser localStorage."
+      }
+    },
+    "normalization": {
+      "time_decay_enabled": true,
+      "_comment_time_decay": "Prevents older albums from dominating purely due to accumulated streams. Albums are compared within a rolling window.",
+      "catalog_size_normalization": true,
+      "_comment_catalog": "Adjusts for artists with large back catalogs pulling streams from this album.",
+      "baseline_window_years": 2,
+      "vibe_tap_scale": "1-5",
+      "vibe_tap_display": "normalized to 0-100 before weighting"
+    }
+  },
+
+  "critic_score": {
+    "_comment": "Outlet weights reflect reach, credibility, and music-specific focus. Must sum to 1.0.",
+    "inputs": {
+      "pitchfork":            { "weight": 0.20, "scale": "0-10", "url": "pitchfork.com" },
+      "rolling_stone":        { "weight": 0.20, "scale": "1-5 stars", "url": "rollingstone.com" },
+      "nme":                  { "weight": 0.15, "scale": "1-5 stars", "url": "nme.com" },
+      "allmusic":             { "weight": 0.15, "scale": "1-5 stars", "url": "allmusic.com" },
+      "the_guardian":         { "weight": 0.15, "scale": "1-5 stars", "url": "theguardian.com" },
+      "paste_magazine":       { "weight": 0.075, "scale": "0-10", "url": "pastemagazine.com" },
+      "consequence_of_sound": { "weight": 0.075, "scale": "A-F letter", "url": "consequence.net" }
+    },
+    "normalization": {
+      "scale_conversion": true,
+      "_comment": "All outlet scores converted to 0-100 before weighting.",
+      "outlet_baseline_correction": true,
+      "_comment_baseline": "Accounts for outlets that systematically score higher or lower than average.",
+      "minimum_outlets_required": 3,
+      "_comment_minimum": "Albums with fewer than 3 outlet scores receive a low_confidence flag.",
+      "missing_outlet_handling": "exclude_and_reweight",
+      "_comment_missing": "If an outlet hasn't reviewed an album, redistribute its weight proportionally."
+    }
+  },
+
+  "combined_score": {
+    "monthly_rankings": {
+      "crowd_weight": 0.55,
+      "critic_weight": 0.45,
+      "_comment": "Monthly favors crowd energy — what people are actually listening to right now."
+    },
+    "alltime_rankings": {
+      "crowd_weight": 0.40,
+      "critic_weight": 0.60,
+      "_comment": "All-time favors critical consensus — longevity of critical opinion matters more historically."
+    }
+  },
+
+  "tier_thresholds": {
+    "_comment": "Combined score ranges that determine tier badges. Adjust these to recalibrate the distribution.",
+    "certified_banger":   { "min": 90, "max": 100, "emoji": "🔥", "label": "Certified Banger" },
+    "absolute_slapper":   { "min": 75, "max": 89,  "emoji": "🤘", "label": "Absolute Slapper" },
+    "hard_rotation":      { "min": 60, "max": 74,  "emoji": "🎧", "label": "Hard Rotation" },
+    "mid_season":         { "min": 45, "max": 59,  "emoji": "😐", "label": "Mid Season" },
+    "deep_cut":           { "min": 0,  "max": 44,  "emoji": "💀", "label": "Deep Cut" }
+  },
+
+  "critic_tier_thresholds": {
+    "critically_untouchable": { "min": 90, "max": 100, "emoji": "✨", "label": "Critically Untouchable" },
+    "press_approved":         { "min": 75, "max": 89,  "emoji": "📰", "label": "Press Approved" },
+    "solid_record":           { "min": 60, "max": 74,  "emoji": "🎵", "label": "Solid Record" },
+    "mixed_bag":              { "min": 45, "max": 59,  "emoji": "🎲", "label": "Mixed Bag" },
+    "hard_sell":              { "min": 0,  "max": 44,  "emoji": "📉", "label": "Hard Sell" }
+  },
+
+  "crowd_tier_thresholds": {
+    "certified_banger": { "min": 90, "max": 100, "emoji": "🔥", "label": "Certified Banger" },
+    "absolute_slapper": { "min": 75, "max": 89,  "emoji": "🤘", "label": "Absolute Slapper" },
+    "hard_rotation":    { "min": 60, "max": 74,  "emoji": "🎧", "label": "Hard Rotation" },
+    "mid_season":       { "min": 45, "max": 59,  "emoji": "😐", "label": "Mid Season" },
+    "deep_cut":         { "min": 0,  "max": 44,  "emoji": "💀", "label": "Deep Cut" }
+  },
+
+  "gap_badges": {
+    "_comment": "Awarded when The Stage and The Crowd scores diverge significantly.",
+    "peoples_champion": {
+      "emoji": "👑",
+      "label": "People's Champion",
+      "condition": "crowd_score minus critic_score >= 15",
+      "_comment": "Crowd loves it, critics are cold."
+    },
+    "critics_darling": {
+      "emoji": "💎",
+      "label": "Critics' Darling",
+      "condition": "critic_score minus crowd_score >= 15",
+      "_comment": "Critics love it, crowd is lukewarm."
+    },
+    "unanimous": {
+      "emoji": "🤝",
+      "label": "Unanimous",
+      "condition": "absolute difference between scores <= 5",
+      "_comment": "Rare. Both sides agree."
+    }
+  },
+
+  "ondeck_states": {
+    "_comment": "Albums in their 30-day evaluation window show these states instead of tier badges.",
+    "early_signal":  { "emoji": "📡", "label": "Early Signal",  "days": "0-2",   "_comment": "First 48 hours. Score is forming." },
+    "taking_shape":  { "emoji": "🔄", "label": "Taking Shape",  "days": "3-7",   "_comment": "Most critic reviews coming in." },
+    "almost_locked": { "emoji": "⏳", "label": "Almost Locked", "days": "8-29",  "_comment": "Score stabilizing." },
+    "score_locked":  { "emoji": "🔒", "label": "Score Locked",  "days": "30",    "_comment": "Graduates to main catalog." }
+  }
+}
