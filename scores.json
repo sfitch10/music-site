@@ -1,0 +1,609 @@
+{
+  "scores": {
+    "dua-lipa-future-nostalgia-2020": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.7, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 91, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "the-weeknd-after-hours-2020": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.0, "nme": 5.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 95, "sales_chart_performance": 97, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "fiona-apple-fetch-the-bolt-cutters-2020": {
+      "critic_inputs": { "pitchfork": 10.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.8, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 62, "sales_chart_performance": 44, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "taylor-swift-folklore-2020": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.0, "paste_magazine": 8.4, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 98, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "taylor-swift-evermore-2020": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.0, "paste_magazine": 8.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 94, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "lady-gaga-chromatica-2020": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.0, "paste_magazine": 7.2, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 82, "sales_chart_performance": 85, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "pop-smoke-shoot-for-the-stars-2020": {
+      "critic_inputs": { "pitchfork": 7.2, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.0, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 92, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "lil-baby-my-turn-2020": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 3.5, "allmusic": 3.5, "the_guardian": 3.0, "paste_magazine": 6.8, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 93, "sales_chart_performance": 95, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "roddy-ricch-please-excuse-me-2020": {
+      "critic_inputs": { "pitchfork": 6.8, "rolling_stone": 3.5, "nme": 3.5, "allmusic": 3.5, "the_guardian": 3.0, "paste_magazine": 6.5, "consequence_of_sound": "B-" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 90, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "phoebe-bridgers-punisher-2020": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 70, "sales_chart_performance": 52, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "run-the-jewels-rtj4-2020": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.1, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 74, "sales_chart_performance": 58, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "harry-styles-fine-line-2020": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.5, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 89, "sales_chart_performance": 87, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "jessie-ware-whats-your-pleasure-2020": {
+      "critic_inputs": { "pitchfork": 8.7, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.5, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 65, "sales_chart_performance": 48, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "tyler-childers-long-violent-history-2020": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": null, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.2, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 68, "sales_chart_performance": 55, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "zach-bryan-elisabeth-2020": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": null, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 58, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 5, "confidence": "medium", "last_updated": "2025-01-01" }
+    },
+    "bad-bunny-el-ultimo-tour-2020": {
+      "critic_inputs": { "pitchfork": 8.2, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 91, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "bts-be-2020": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 6.8, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 92, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "bts-map-of-the-soul-7-2020": {
+      "critic_inputs": { "pitchfork": 7.2, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.0, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 97, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+
+    "adele-30-2021": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.3, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 98, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "tyler-the-creator-call-me-2021": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 86, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "drake-certified-lover-boy-2021": {
+      "critic_inputs": { "pitchfork": 6.0, "rolling_stone": 3.0, "nme": 3.5, "allmusic": 3.0, "the_guardian": 3.0, "paste_magazine": 5.8, "consequence_of_sound": "C+" },
+      "crowd_inputs": { "streaming_data": 96, "sales_chart_performance": 98, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "kanye-west-donda-2021": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 3.5, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 6.5, "consequence_of_sound": "B-" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "olivia-rodrigo-sour-2021": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 95, "sales_chart_performance": 97, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "silk-sonic-an-evening-2021": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 7.8, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 82, "sales_chart_performance": 79, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "ed-sheeran-equals-2021": {
+      "critic_inputs": { "pitchfork": 5.8, "rolling_stone": 3.5, "nme": 3.0, "allmusic": 3.5, "the_guardian": 3.0, "paste_magazine": 5.5, "consequence_of_sound": "C" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 94, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "lil-nas-x-montero-2021": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.4, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 89, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "j-cole-the-off-season-2021": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.2, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "morgan-wallen-dangerous-2021": {
+      "critic_inputs": { "pitchfork": 6.0, "rolling_stone": 3.5, "nme": null, "allmusic": 3.5, "the_guardian": 3.0, "paste_magazine": 6.2, "consequence_of_sound": "B-" },
+      "crowd_inputs": { "streaming_data": 96, "sales_chart_performance": 98, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "billie-eilish-happier-than-ever-2021": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.2, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 90, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "jazmine-sullivan-heaux-tales-2021": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 62, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "little-simz-sometimes-2021": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 68, "sales_chart_performance": 55, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "japanese-breakfast-jubilee-2021": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.8, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 67, "sales_chart_performance": 50, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "wet-leg-wet-leg-2021": {
+      "critic_inputs": { "pitchfork": 8.3, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.5, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 70, "sales_chart_performance": 60, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "arooj-aftab-vulture-prince-2021": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": null, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.7, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 55, "sales_chart_performance": 38, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "turnstile-glow-on-2021": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 68, "sales_chart_performance": 52, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "kacey-musgraves-star-crossed-2021": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 74, "sales_chart_performance": 68, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "lorde-solar-power-2021": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 3.5, "allmusic": 3.5, "the_guardian": 3.0, "paste_magazine": 6.8, "consequence_of_sound": "B-" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 65, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "summer-walker-still-over-it-2021": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 3.5, "paste_magazine": 7.5, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 82, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "baby-keem-the-melodic-blue-2021": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 3.5, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 78, "sales_chart_performance": 74, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "polo-g-hall-of-fame-2021": {
+      "critic_inputs": { "pitchfork": 6.5, "rolling_stone": 3.5, "nme": null, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 6.5, "consequence_of_sound": "B-" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 5, "confidence": "medium", "last_updated": "2025-01-01" }
+    },
+    "karol-g-kg0516-2021": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 7.2, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 84, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "j-balvin-jose-2021": {
+      "critic_inputs": { "pitchfork": 6.5, "rolling_stone": 3.0, "nme": 3.5, "allmusic": 3.0, "the_guardian": 3.0, "paste_magazine": 6.2, "consequence_of_sound": "C+" },
+      "crowd_inputs": { "streaming_data": 85, "sales_chart_performance": 80, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "snoh-aalegra-temporary-highs-2021": {
+      "critic_inputs": { "pitchfork": 8.2, "rolling_stone": 4.0, "nme": null, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 66, "sales_chart_performance": 52, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+
+    "beyonce-renaissance-2022": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "bad-bunny-un-verano-sin-ti-2022": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.1, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 96, "sales_chart_performance": 97, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "kendrick-lamar-mr-morale-2022": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.3, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "harry-styles-harrys-house-2022": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "taylor-swift-midnights-2022": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.4, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 97, "sales_chart_performance": 99, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "pusha-t-its-almost-dry-2022": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 68, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "steve-lacy-gemini-rights-2022": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.6, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 83, "sales_chart_performance": 80, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "rosalia-motomami-2022": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 78, "sales_chart_performance": 72, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "zach-bryan-american-heartbreak-2022": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.0, "nme": null, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 85, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "noah-kahan-stick-season-2022": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": null, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 89, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "future-i-never-liked-you-2022": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": null, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 6.8, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "big-thief-dragon-new-warm-mountain-2022": {
+      "critic_inputs": { "pitchfork": 9.2, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 60, "sales_chart_performance": 45, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "weyes-blood-in-the-darkness-2022": {
+      "critic_inputs": { "pitchfork": 9.2, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.3, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 62, "sales_chart_performance": 48, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "alvvays-blue-rev-2022": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 62, "sales_chart_performance": 48, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "megan-thee-stallion-traumazine-2022": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 3.5, "paste_magazine": 7.2, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 78, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "rina-sawayama-hold-the-girl-2022": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.2, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 65, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "drake-honestly-nevermind-2022": {
+      "critic_inputs": { "pitchfork": 6.5, "rolling_stone": 3.0, "nme": 3.5, "allmusic": 3.0, "the_guardian": 2.5, "paste_magazine": 6.0, "consequence_of_sound": "C+" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 93, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "gunna-ds4ever-2022": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": null, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 6.8, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 85, "sales_chart_performance": 89, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 5, "confidence": "medium", "last_updated": "2025-01-01" }
+    },
+    "jack-harlow-come-home-2022": {
+      "critic_inputs": { "pitchfork": 6.0, "rolling_stone": 3.0, "nme": 3.0, "allmusic": 3.0, "the_guardian": 2.5, "paste_magazine": 5.8, "consequence_of_sound": "C" },
+      "crowd_inputs": { "streaming_data": 78, "sales_chart_performance": 80, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "brent-faiyaz-wasteland-2022": {
+      "critic_inputs": { "pitchfork": 8.2, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 74, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "blackpink-born-pink-2022": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "stray-kids-oddinary-2022": {
+      "critic_inputs": { "pitchfork": 7.2, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "bad-bunny-nadie-sabe-2022": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 3.5, "paste_magazine": 7.5, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 82, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+
+    "sza-sos-2023": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 96, "sales_chart_performance": 98, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "morgan-wallen-one-thing-2023": {
+      "critic_inputs": { "pitchfork": 6.5, "rolling_stone": 3.5, "nme": null, "allmusic": 4.0, "the_guardian": 3.0, "paste_magazine": 6.8, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 97, "sales_chart_performance": 99, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "boygenius-the-record-2023": {
+      "critic_inputs": { "pitchfork": 9.2, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.4, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 78, "sales_chart_performance": 70, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "lana-del-rey-did-you-know-2023": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 76, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "mitski-the-land-is-inhospitable-2023": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 70, "sales_chart_performance": 58, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "olivia-rodrigo-guts-2023": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "travis-scott-utopia-2023": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 92, "sales_chart_performance": 95, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "zach-bryan-zach-bryan-2023": {
+      "critic_inputs": { "pitchfork": 8.2, "rolling_stone": 4.5, "nme": null, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.5, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 92, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "karol-g-manana-sera-bonito-2023": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 92, "sales_chart_performance": 94, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "paramore-this-is-why-2023": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.2, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 75, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "janelle-monae-age-of-pleasure-2023": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.3, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 70, "sales_chart_performance": 62, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "fred-again-actual-life-3-2023": {
+      "critic_inputs": { "pitchfork": 8.8, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.7, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 60, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "kelela-raven-2023": {
+      "critic_inputs": { "pitchfork": 8.7, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 62, "sales_chart_performance": 50, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "newjeans-omg-2023": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 86, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "newjeans-get-up-2023": {
+      "critic_inputs": { "pitchfork": 8.2, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 87, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "twice-ready-to-be-2023": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 82, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "ateez-the-world-ep2-2023": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 7.2, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 82, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "stray-kids-5-star-2023": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 3.5, "nme": 4.5, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 7.2, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 87, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "jungkook-golden-2023": {
+      "critic_inputs": { "pitchfork": 7.2, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 91, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "caroline-polachek-desire-2023": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 60, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "victoria-monet-jaguar-ii-2023": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 74, "sales_chart_performance": 68, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "pinkpantheress-heaven-knows-2023": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 76, "sales_chart_performance": 70, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "sufjan-stevens-javelin-2023": {
+      "critic_inputs": { "pitchfork": 9.5, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 64, "sales_chart_performance": 50, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "drake-21-savage-her-loss-2023": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 94, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+
+    "beyonce-cowboy-carter-2024": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.3, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 92, "sales_chart_performance": 95, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "kendrick-lamar-gnx-2024": {
+      "critic_inputs": { "pitchfork": 9.2, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "sabrina-carpenter-short-n-sweet-2024": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.8, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "billie-eilish-hit-me-hard-2024": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 8.7, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 90, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "charli-xcx-brat-2024": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "chappell-roan-midwest-princess-2024": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "taylor-swift-ttpd-2024": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.5, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 97, "sales_chart_performance": 99, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "tyler-the-creator-chromakopia-2024": {
+      "critic_inputs": { "pitchfork": 8.8, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 91, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "doechii-alligator-bites-2024": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 76, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "future-metro-we-dont-trust-you-2024": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 3.5, "paste_magazine": 7.5, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 90, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "ariana-grande-eternal-sunshine-2024": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "magdalena-bay-imaginal-disk-2024": {
+      "critic_inputs": { "pitchfork": 9.3, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 62, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "clairo-charm-2024": {
+      "critic_inputs": { "pitchfork": 8.2, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.2, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 76, "sales_chart_performance": 70, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "shaboozey-where-i-come-from-2024": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.0, "nme": null, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 94, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "hozier-unreal-unearth-2024": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 86, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "zach-bryan-great-american-bar-scene-2024": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.0, "nme": null, "allmusic": 4.0, "the_guardian": 3.5, "paste_magazine": 8.0, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "21-savage-american-dream-2024": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 86, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "glorilla-glorious-2024": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 3.5, "the_guardian": 3.5, "paste_magazine": 7.5, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 78, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "gracie-abrams-the-secret-of-us-2024": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 78, "sales_chart_performance": 76, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+    "aespa-armageddon-2024": {
+      "critic_inputs": { "pitchfork": 7.2, "rolling_stone": 3.5, "nme": 4.0, "allmusic": 3.5, "the_guardian": null, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 82, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-01-01" }
+    },
+
+    "bad-bunny-debi-tirar-mas-fotos-2025": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.2, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 90, "sales_chart_performance": 92, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-06-01" }
+    },
+    "morgan-wallen-im-the-problem-2025": {
+      "critic_inputs": { "pitchfork": 6.5, "rolling_stone": 3.5, "nme": null, "allmusic": 4.0, "the_guardian": 3.0, "paste_magazine": 6.8, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 96, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "high", "last_updated": "2025-06-01" }
+    },
+    "lorde-virgin-2025": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.8, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 76, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-06-01" }
+    },
+    "fka-twigs-eusexua-2025": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 72, "sales_chart_performance": 62, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-06-01" }
+    },
+    "rosalia-lux-2025": {
+      "critic_inputs": { "pitchfork": 8.8, "rolling_stone": 4.5, "nme": 5.0, "allmusic": null, "the_guardian": 4.5, "paste_magazine": 8.8, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 76, "sales_chart_performance": 68, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "medium", "last_updated": "2025-06-01" }
+    },
+    "tyler-the-creator-dont-tap-the-glass-2025": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 4.5, "allmusic": null, "the_guardian": 4.0, "paste_magazine": 8.5, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 86, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "medium", "last_updated": "2025-06-01" }
+    },
+    "the-weeknd-hurry-up-tomorrow-2025": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.5, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-06-01" }
+    },
+    "lady-gaga-mayhem-2025": {
+      "critic_inputs": { "pitchfork": 7.8, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 87, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2025-06-01" }
+    },
+    "sabrina-carpenter-mans-best-friend-2025": {
+      "critic_inputs": { "pitchfork": 7.5, "rolling_stone": 4.0, "nme": 4.5, "allmusic": null, "the_guardian": 4.0, "paste_magazine": 7.8, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 86, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "medium", "last_updated": "2025-06-01" }
+    },
+    "playboi-carti-music-2025": {
+      "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 4.0, "allmusic": null, "the_guardian": 3.5, "paste_magazine": 7.0, "consequence_of_sound": "B" },
+      "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 88, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 6, "confidence": "medium", "last_updated": "2025-06-01" }
+    }
+  }
+}

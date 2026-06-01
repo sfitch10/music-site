@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On Deck — [SITE NAME]</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">[LOGO] <span>[SITE NAME]</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Monthly</a></li>
+        <li><a href="alltime.html">All-Time</a></li>
+        <li><a href="ondeck.html">On Deck</a></li>
+        <li><a href="debate.html">The Debate</a></li>
+        <li><a href="howwescore.html">How We Score</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-eyebrow">New Releases</div>
+      <h1 class="hero-title">On Deck</h1>
+      <p class="hero-subtitle">Scores Still Forming — These albums dropped recently. Their scores are live and updating.</p>
+    </header>
+
+    <div class="ondeck-grid"></div>
+
+  </div>
+
+  <footer class="footer">
+    <p>[SITE NAME] — The definitive score for what's hitting right now. &nbsp;|&nbsp; <a href="howwescore.html">How We Score</a></p>
+  </footer>
+
+  <script type="module">
+    import { initOnDeckPage, initNavToggle } from './js/ui.js';
+    initNavToggle();
+    initOnDeckPage();
+  </script>
+
+</body>
+</html>

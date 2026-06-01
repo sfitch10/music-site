@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[SITE NAME] — What's Hitting Right Now</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">[LOGO] <span>[SITE NAME]</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Monthly</a></li>
+        <li><a href="alltime.html">All-Time</a></li>
+        <li><a href="ondeck.html">On Deck</a></li>
+        <li><a href="debate.html">The Debate</a></li>
+        <li><a href="howwescore.html">How We Score</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-eyebrow">Monthly Setlist</div>
+      <h1 class="hero-title">[SITE NAME] — What's Hitting Right Now</h1>
+      <p class="hero-subtitle" id="setlist-date">Loading...</p>
+    </header>
+
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">Genre</span>
+        <div class="genre-pills" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Sort by</span>
+        <select class="sort-select">
+          <option value="combined">Combined Score</option>
+          <option value="critic">Critics' Score</option>
+          <option value="crowd">Crowd Score</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="album-grid"></div>
+
+  </div>
+
+  <footer class="footer">
+    <p>[SITE NAME] — The definitive score for what's hitting right now. &nbsp;|&nbsp; <a href="howwescore.html">How We Score</a></p>
+  </footer>
+
+  <script type="module">
+    import { initIndexPage, initNavToggle } from './js/ui.js';
+
+    const now = new Date();
+    document.getElementById('setlist-date').textContent =
+      now.toLocaleString('default', { month: 'long' }) + ' ' + now.getFullYear() + ' Setlist';
+
+    initNavToggle();
+    initIndexPage();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album — [SITE NAME]</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">[LOGO] <span>[SITE NAME]</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Monthly</a></li>
+        <li><a href="alltime.html">All-Time</a></li>
+        <li><a href="ondeck.html">On Deck</a></li>
+        <li><a href="debate.html">The Debate</a></li>
+        <li><a href="howwescore.html">How We Score</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <a href="javascript:history.back()" class="back-link">← Back</a>
+
+  <section class="album-hero">
+    <div class="album-hero-bg"></div>
+    <div class="album-hero-content">
+
+      <div class="album-hero-art"></div>
+
+      <div class="album-hero-info">
+        <div class="album-hero-artist"></div>
+        <h1 class="album-hero-title"></h1>
+        <div class="album-genre-tags"></div>
+
+        <div class="album-score-display">
+          <div class="album-combined-score">
+            <div class="tier-badge-slot"></div>
+            <div class="score-big">--</div>
+            <div class="score-label">Combined Score</div>
+          </div>
+
+          <hr class="score-divider">
+
+          <div class="album-sub-scores-row">
+            <div class="album-sub-score">
+              <div class="score-name">🎙️ The Stage</div>
+              <div class="score-num critic-score-num">--</div>
+              <div class="score-tier-small critic-tier-label"></div>
+            </div>
+            <div class="album-sub-score">
+              <div class="score-name">👥 The Crowd</div>
+              <div class="score-num crowd-score-num">--</div>
+              <div class="score-tier-small crowd-tier-label"></div>
+            </div>
+          </div>
+
+          <div class="album-gap-badge" style="text-align:center;margin-top:8px"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Frequency Meter -->
+    <div class="frequency-meter" style="margin-bottom:var(--space-xl)">
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+      <div class="freq-bar"></div>
+    </div>
+
+    <!-- On Deck Progress (hidden by default) -->
+    <div class="ondeck-progress-section" style="display:none;background:var(--color-bg-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-lg);margin-bottom:var(--space-xl)">
+      <div class="section-title">Score In Progress</div>
+      <div style="margin-bottom:8px"><span class="ondeck-state-badge"></span></div>
+      <div class="ondeck-progress">
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:0%"></div></div>
+        <div class="progress-label"></div>
+      </div>
+    </div>
+
+    <!-- Vibe Tap -->
+    <div class="vibe-tap-section">
+      <div class="vibe-tap-label">What's your vibe?</div>
+      <div class="vibe-stars">
+        <span class="vibe-star" data-rating="1">⭐</span>
+        <span class="vibe-star" data-rating="2">⭐</span>
+        <span class="vibe-star" data-rating="3">⭐</span>
+        <span class="vibe-star" data-rating="4">⭐</span>
+        <span class="vibe-star" data-rating="5">⭐</span>
+      </div>
+      <div class="vibe-tap-avg">Tap a star to leave your vibe — no account needed</div>
+    </div>
+
+    <!-- Critic Breakdown -->
+    <div class="critic-breakdown">
+      <div class="section-title">🎙️ The Stage — Critic Breakdown</div>
+
+      <div class="confidence-warning low-confidence-badge" style="display:none">
+        ⚠️ Limited Data — fewer than 3 outlets reviewed
+      </div>
+
+      <p style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:var(--space-md)">
+        Scores normalized to 0–100 for comparison
+      </p>
+
+      <div class="outlet-list-items"></div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>[SITE NAME] — The definitive score for what's hitting right now. &nbsp;|&nbsp; <a href="howwescore.html">How We Score</a></p>
+  </footer>
+
+  <script type="module">
+    import { initAlbumPage, initNavToggle } from './js/ui.js';
+    initNavToggle();
+    initAlbumPage();
+  </script>
+
+</body>
+</html>
