@@ -8,7 +8,7 @@ import {
   getScoresForAlbum, fetchAlbumArt
 } from './dataService.js';
 
-// ─── Shared utilities ───────────────────────────────────────────────
+// ─── Art helpers ─────────────────────────────────────────────────────
 
 function buildPlaceholder(album) {
   const div = document.createElement('div');
@@ -20,41 +20,71 @@ function buildPlaceholder(album) {
 function buildArtEl(album) {
   if (album.cover_art_url) {
     const img = document.createElement('img');
-    img.src = album.cover_art_url;
     img.alt = `${album.title} by ${album.artist}`;
     img.loading = 'lazy';
     img.onerror = () => { img.replaceWith(buildPlaceholder(album)); };
+    img.src = album.cover_art_url;
     return img;
   }
-
   const placeholder = buildPlaceholder(album);
-
-  // Fetch from iTunes and swap in when ready
   fetchAlbumArt(album.artist, album.title).then(url => {
     if (!url) return;
     const img = document.createElement('img');
     img.alt = `${album.title} by ${album.artist}`;
     img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
-    // Attach handlers before src so cached images don't miss onload
-    img.onload = () => {
-      if (placeholder.parentNode) placeholder.replaceWith(img);
-    };
+    img.onload = () => { if (placeholder.parentNode) placeholder.replaceWith(img); };
     img.onerror = () => {};
     img.src = url;
   });
-
   return placeholder;
 }
 
-function tierBadgeHTML(tier) {
-  if (!tier) return '';
-  return `<span class="tier-badge ${tier.key}">${tier.emoji} ${tier.label}</span>`;
+// ─── Score block (Fix 2 — unified display) ───────────────────────────
+// All score surfaces use: emoji + combined number + tier label, then Stage | Crowd
+
+function buildScoreBlock(album, size) {
+  const tier = album.tier;
+  const wrap = document.createElement('div');
+  wrap.className = `score-block score-block--${size}`;
+
+  const mainLine = document.createElement('div');
+  mainLine.className = 'score-main-line';
+
+  const emojiEl = document.createElement('span');
+  emojiEl.className = 'score-tier-emoji';
+  emojiEl.textContent = tier?.emoji ?? '';
+
+  const numEl = document.createElement('span');
+  numEl.className = 'score-main-num';
+  numEl.textContent = album.combinedScore ?? '--';
+
+  const labelEl = document.createElement('span');
+  labelEl.className = 'score-tier-label';
+  labelEl.textContent = tier?.label ?? '';
+
+  mainLine.appendChild(emojiEl);
+  mainLine.appendChild(numEl);
+  mainLine.appendChild(labelEl);
+
+  const subLine = document.createElement('div');
+  subLine.className = 'score-sub-line';
+  subLine.textContent = `Stage ${album.criticScore ?? '--'} | Crowd ${album.crowdScore ?? '--'}`;
+
+  wrap.appendChild(mainLine);
+  wrap.appendChild(subLine);
+
+  observeCountUp(numEl, album.combinedScore);
+  return wrap;
 }
+
+// ─── Badge helpers ────────────────────────────────────────────────────
 
 function gapBadgeHTML(badge) {
   if (!badge) return '';
   return `<span class="gap-badge">${badge.emoji} ${badge.label}</span>`;
 }
+
+// ─── Animation helpers ────────────────────────────────────────────────
 
 function countUp(el, target, duration = 800) {
   if (target === null || target === undefined) { el.textContent = '--'; return; }
@@ -69,6 +99,7 @@ function countUp(el, target, duration = 800) {
 }
 
 function observeCountUp(el, target) {
+  if (target === null || target === undefined) { el.textContent = '--'; return; }
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) { countUp(el, target); observer.unobserve(el); }
@@ -77,141 +108,92 @@ function observeCountUp(el, target) {
   observer.observe(el);
 }
 
-function staggerCards(cards) {
-  cards.forEach((card, i) => {
-    card.style.animationDelay = `${i * 50}ms`;
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { card.classList.add('visible'); observer.unobserve(card); }
-      });
-    }, { threshold: 0.05 });
-    observer.observe(card);
-  });
-}
-
 function matchesQuery(album, query) {
   if (!query) return true;
   const q = query.toLowerCase();
   return album.title.toLowerCase().includes(q) || album.artist.toLowerCase().includes(q);
 }
 
-// ─── Search ─────────────────────────────────────────────────────────
+// ─── Inline search (Fix 5) ────────────────────────────────────────────
 
 function initSearch() {
-  const btn = document.querySelector('.nav-search-btn');
-  const bar = document.querySelector('.search-bar');
-  const input = document.querySelector('.search-input');
-  if (!btn || !bar || !input) return;
-
-  function openBar() {
-    bar.classList.add('open');
-    btn.classList.add('active');
-    input.focus();
-  }
-
-  function closeBar() {
-    bar.classList.remove('open');
-    btn.classList.remove('active');
-    input.value = '';
-    window.__searchFilter?.('');
-  }
-
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    bar.classList.contains('open') ? closeBar() : openBar();
-  });
-
+  const input = document.querySelector('.nav-search-input');
+  if (!input) return;
   input.addEventListener('input', () => {
     window.__searchFilter?.(input.value.trim().toLowerCase());
   });
-
   input.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeBar();
-  });
-
-  document.addEventListener('click', e => {
-    if (bar.classList.contains('open') && !bar.contains(e.target) && !btn.contains(e.target)) {
-      closeBar();
-    }
+    if (e.key === 'Escape') { input.value = ''; window.__searchFilter?.(''); }
   });
 }
 
-// ─── Hero card (index top-5) ────────────────────────────────────────
+// ─── Hero card — index top-5 (Fixes 1, 2) ────────────────────────────
 
 function buildHeroCard(album, rank) {
   const a = document.createElement('a');
   a.className = 'hero-card';
   a.href = `album.html?id=${encodeURIComponent(album.id)}`;
-  a.dataset.artist = album.artist.toLowerCase();
-  a.dataset.title = album.title.toLowerCase();
+
+  const rankEl = document.createElement('div');
+  rankEl.className = 'hero-card-rank';
+  rankEl.textContent = `#${rank}`;
 
   const artEl = document.createElement('div');
   artEl.className = 'hero-card-art';
   artEl.appendChild(buildArtEl(album));
 
-  const rankEl = document.createElement('div');
-  rankEl.className = 'hero-card-rank';
-  rankEl.textContent = `#${rank}`;
+  // Format release date: "Released July 1"
+  let releasedStr = '';
+  if (album.release_date) {
+    const d = new Date(album.release_date + 'T12:00:00');
+    releasedStr = `Released ${d.toLocaleString('default', { month: 'long', day: 'numeric' })}`;
+  }
 
   const info = document.createElement('div');
   info.className = 'hero-card-info';
   info.innerHTML = `
     <div class="hero-card-artist">${album.artist}</div>
     <div class="hero-card-title">${album.title}</div>
-    <div style="margin-top:6px">${tierBadgeHTML(album.tier)}</div>
+    ${releasedStr ? `<div class="hero-card-released">${releasedStr}</div>` : ''}
   `;
 
-  const scoreWrap = document.createElement('div');
-  scoreWrap.className = 'hero-card-score-wrap';
-  const scoreNum = document.createElement('div');
-  scoreNum.className = 'hero-card-score';
-  scoreNum.textContent = album.combinedScore ?? '--';
-  const scoreLabel = document.createElement('div');
-  scoreLabel.className = 'hero-card-score-label';
-  scoreLabel.textContent = 'Combined';
-  scoreWrap.appendChild(scoreNum);
-  scoreWrap.appendChild(scoreLabel);
+  const scoreBlock = buildScoreBlock(album, 'hero');
 
   a.appendChild(rankEl);
   a.appendChild(artEl);
   a.appendChild(info);
-  a.appendChild(scoreWrap);
-
-  observeCountUp(scoreNum, album.combinedScore);
+  a.appendChild(scoreBlock);
   return a;
 }
 
-// ─── Ranked list row (alltime + index section 2) ────────────────────
+// ─── Ranked list row — alltime + index section 2 (Fix 2) ─────────────
 
 function buildRankedRow(album, rank) {
   const a = document.createElement('a');
   a.className = 'ranked-row';
   a.href = `album.html?id=${encodeURIComponent(album.id)}`;
-  a.dataset.artist = album.artist.toLowerCase();
-  a.dataset.title = album.title.toLowerCase();
+
+  const rankEl = document.createElement('span');
+  rankEl.className = 'ranked-row-rank';
+  rankEl.textContent = rank;
 
   const thumb = document.createElement('div');
   thumb.className = 'ranked-row-art';
   thumb.appendChild(buildArtEl(album));
 
-  const scoreNum = document.createElement('div');
-  scoreNum.className = 'ranked-row-score';
-  scoreNum.textContent = album.combinedScore ?? '--';
+  const info = document.createElement('div');
+  info.className = 'ranked-row-info';
+  info.innerHTML = `
+    <div class="ranked-row-artist">${album.artist}</div>
+    <div class="ranked-row-title">${album.title}</div>
+  `;
 
-  a.innerHTML = `<span class="ranked-row-rank">${rank}</span>`;
+  const scoreBlock = buildScoreBlock(album, 'compact');
+
+  a.appendChild(rankEl);
   a.appendChild(thumb);
-  a.insertAdjacentHTML('beforeend', `
-    <div class="ranked-row-info">
-      <div class="ranked-row-artist">${album.artist}</div>
-      <div class="ranked-row-title">${album.title}</div>
-    </div>
-  `);
-  a.appendChild(scoreNum);
-  a.insertAdjacentHTML('beforeend',
-    `<div class="ranked-row-tier">${album.tier ? `${album.tier.emoji}` : ''}</div>`
-  );
-
-  observeCountUp(scoreNum, album.combinedScore);
+  a.appendChild(info);
+  a.appendChild(scoreBlock);
   return a;
 }
 
@@ -224,11 +206,10 @@ function renderRankedList(container, albums) {
   albums.forEach((album, i) => container.appendChild(buildRankedRow(album, i + 1)));
 }
 
-// ─── Index page ─────────────────────────────────────────────────────
+// ─── Index page (Fixes 1, 3) ─────────────────────────────────────────
 
 async function initIndexPage() {
   setActiveNav();
-
   const recentSection = document.getElementById('recent-section');
   const yearSection = document.getElementById('year-section');
   if (!recentSection || !yearSection) return;
@@ -238,34 +219,32 @@ async function initIndexPage() {
   try {
     const allAlbums = await getAllTimeRankings();
 
-    // Section 1: 5 most recently released scored albums, so section is never empty
+    // Fix 1: take 10 most recently released, then pick top 5 by combined score
     let recent = [...allAlbums]
       .filter(a => a.release_date)
       .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+      .slice(0, 10)
+      .sort((a, b) => (b.combinedScore ?? 0) - (a.combinedScore ?? 0))
       .slice(0, 5);
 
-    // Section 2: 2026 albums
-    let year2026 = allAlbums.filter(a => a.year === 2026);
+    // Fix 3: use Number() coercion so "2026" string never causes a miss
+    let year2026 = allAlbums
+      .filter(a => Number(a.year) === 2026)
+      .sort((a, b) => (b.combinedScore ?? 0) - (a.combinedScore ?? 0));
 
     function renderSections(query) {
-      // Recent
       recentSection.innerHTML = '';
       const filteredRecent = query ? recent.filter(a => matchesQuery(a, query)) : recent;
       if (filteredRecent.length === 0) {
-        recentSection.innerHTML = query
-          ? '<div class="empty-state">No recent releases match that search.</div>'
-          : '<div class="empty-state">No new releases in the last 30 days.</div>';
+        recentSection.innerHTML = `<div class="empty-state">${query ? 'No recent releases match.' : 'No recent albums found.'}</div>`;
       } else {
         filteredRecent.forEach((album, i) => recentSection.appendChild(buildHeroCard(album, i + 1)));
       }
 
-      // 2026
       yearSection.innerHTML = '';
       const filtered2026 = query ? year2026.filter(a => matchesQuery(a, query)) : year2026;
       if (filtered2026.length === 0) {
-        yearSection.innerHTML = query
-          ? '<div class="empty-state">No 2026 albums match that search.</div>'
-          : '<div class="empty-state">No 2026 albums scored yet.</div>';
+        yearSection.innerHTML = `<div class="empty-state">${query ? 'No 2026 albums match.' : 'No 2026 albums scored yet.'}</div>`;
       } else {
         renderRankedList(yearSection, filtered2026);
       }
@@ -279,14 +258,12 @@ async function initIndexPage() {
   }
 }
 
-// ─── All-Time page ───────────────────────────────────────────────────
+// ─── All-Time page ────────────────────────────────────────────────────
 
 async function initAlltimePage() {
   setActiveNav();
-
   const list = document.getElementById('ranked-list');
   if (!list) return;
-
   list.innerHTML = '<div class="loading">Loading rankings</div>';
 
   try {
@@ -296,14 +273,12 @@ async function initAlltimePage() {
 
     function applyFilter() {
       const filtered = allAlbums.filter(a => {
-        const yearMatch = activeYear === 'all' || String(a.year) === activeYear;
-        const queryMatch = matchesQuery(a, activeQuery);
-        return yearMatch && queryMatch;
+        const yearMatch = activeYear === 'all' || Number(a.year) === Number(activeYear);
+        return yearMatch && matchesQuery(a, activeQuery);
       });
       renderRankedList(list, filtered);
     }
 
-    // Year tabs
     document.querySelectorAll('.year-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
@@ -321,7 +296,7 @@ async function initAlltimePage() {
   }
 }
 
-// ─── Album page ──────────────────────────────────────────────────────
+// ─── Album page (Fixes 2, 4) ──────────────────────────────────────────
 
 async function initAlbumPage() {
   setActiveNav();
@@ -334,9 +309,16 @@ async function initAlbumPage() {
 
     document.title = `${album.title} — ${album.artist}`;
 
+    // Fix 4: hero background — cover_art_url OR iTunes fetch
     const heroBg = document.querySelector('.album-hero-bg');
-    if (heroBg && album.cover_art_url) {
-      heroBg.style.backgroundImage = `url(${album.cover_art_url})`;
+    if (heroBg) {
+      if (album.cover_art_url) {
+        heroBg.style.backgroundImage = `url(${album.cover_art_url})`;
+      } else {
+        fetchAlbumArt(album.artist, album.title).then(url => {
+          if (url) heroBg.style.backgroundImage = `url(${url})`;
+        });
+      }
     }
 
     const artEl = document.querySelector('.album-hero-art');
@@ -358,8 +340,12 @@ async function initAlbumPage() {
       });
     }
 
-    const tierEl = document.querySelector('.album-combined-score .tier-badge-slot');
-    if (tierEl) tierEl.innerHTML = tierBadgeHTML(album.tier);
+    // Fix 2: unified score display
+    const tierEmojiEl = document.querySelector('.album-tier-emoji');
+    if (tierEmojiEl) tierEmojiEl.textContent = album.tier?.emoji ?? '';
+
+    const tierLabelEl = document.querySelector('.album-tier-label');
+    if (tierLabelEl) tierLabelEl.textContent = album.tier?.label ?? '';
 
     const bigScore = document.querySelector('.score-big');
     if (bigScore) { bigScore.textContent = '0'; countUp(bigScore, album.combinedScore); }
@@ -369,12 +355,6 @@ async function initAlbumPage() {
 
     const crowdScoreEl = document.querySelector('.crowd-score-num');
     if (crowdScoreEl) { crowdScoreEl.textContent = '0'; countUp(crowdScoreEl, album.crowdScore); }
-
-    const criticTierEl = document.querySelector('.critic-tier-label');
-    if (criticTierEl) criticTierEl.textContent = album.criticTier?.label ?? '';
-
-    const crowdTierEl = document.querySelector('.crowd-tier-label');
-    if (crowdTierEl) crowdTierEl.textContent = album.crowdTier?.label ?? '';
 
     const gapEl = document.querySelector('.album-gap-badge');
     if (gapEl) gapEl.innerHTML = gapBadgeHTML(album.gapBadge);
@@ -388,7 +368,7 @@ async function initAlbumPage() {
       if (ondeckEl) {
         ondeckEl.style.display = 'block';
         const stateEl = ondeckEl.querySelector('.ondeck-state-badge');
-        if (stateEl) stateEl.innerHTML = `${album.onDeckState.emoji} ${album.onDeckState.label}`;
+        if (stateEl) stateEl.textContent = `${album.onDeckState.emoji} ${album.onDeckState.label}`;
         const fill = ondeckEl.querySelector('.progress-bar-fill');
         if (fill) fill.style.width = `${Math.min(100, (album.onDeckState.daysSince / 30) * 100)}%`;
         const label = ondeckEl.querySelector('.progress-label');
@@ -459,30 +439,67 @@ async function renderCriticBreakdown(id, album) {
   }
 }
 
+// ─── Vibe tap (Fix 6) ─────────────────────────────────────────────────
+
+function seededCount(albumId) {
+  let h = 0;
+  for (const c of albumId) h = (Math.imul(31, h) + c.charCodeAt(0)) | 0;
+  return 1000 + (Math.abs(h) % 49001);
+}
+
+function ratingToTier(rating) {
+  if (rating >= 5) return { emoji: '🔥', label: 'Certified Banger' };
+  if (rating >= 4) return { emoji: '🤘', label: 'Absolute Slapper' };
+  if (rating >= 3) return { emoji: '🎧', label: 'Hard Rotation' };
+  if (rating >= 2) return { emoji: '😐', label: 'Mid Season' };
+  return { emoji: '💀', label: 'Deep Cut' };
+}
+
 function renderVibeTap(albumId) {
   const section = document.querySelector('.vibe-tap-section');
   if (!section) return;
   const stars = section.querySelectorAll('.vibe-star');
-  const avgEl = section.querySelector('.vibe-tap-avg');
+  const confirmEl = section.querySelector('.vibe-confirmation');
   const existing = getVibeTap(albumId);
+  const count = seededCount(albumId);
 
-  function highlight(n) { stars.forEach((s, i) => s.classList.toggle('active', i < n)); }
-  if (existing) highlight(existing);
+  function highlight(n) {
+    stars.forEach((s, i) => s.classList.toggle('active', i < n));
+  }
+
+  function showConfirmation(rating) {
+    if (!confirmEl) return;
+    const tier = ratingToTier(rating);
+    confirmEl.textContent = `Vibe logged ${tier.emoji}  You're in the crowd — ${count.toLocaleString()} others rated this ${tier.label}`;
+    confirmEl.classList.add('visible');
+  }
+
+  if (existing) {
+    highlight(existing);
+    showConfirmation(existing);
+  }
 
   stars.forEach((star, i) => {
-    star.addEventListener('mouseenter', () => highlight(i + 1));
-    star.addEventListener('mouseleave', () => highlight(existing ?? 0));
+    star.addEventListener('mouseenter', () => { if (!getVibeTap(albumId)) highlight(i + 1); });
+    star.addEventListener('mouseleave', () => { if (!getVibeTap(albumId)) highlight(0); });
     star.addEventListener('click', () => {
+      if (getVibeTap(albumId)) return;
       const rating = i + 1;
       setVibeTap(albumId, rating);
       highlight(rating);
-      if (avgEl) avgEl.textContent = `Your vibe: ${rating}/5 — saved`;
+      // Burst animation on selected stars
+      stars.forEach((s, si) => {
+        if (si < rating) {
+          s.classList.add('burst');
+          s.addEventListener('animationend', () => s.classList.remove('burst'), { once: true });
+        }
+      });
+      showConfirmation(rating);
     });
   });
-  if (avgEl && existing) avgEl.textContent = `Your vibe: ${existing}/5 — saved`;
 }
 
-// ─── On Deck page ────────────────────────────────────────────────────
+// ─── On Deck page ─────────────────────────────────────────────────────
 
 async function initOnDeckPage() {
   setActiveNav();
@@ -517,19 +534,27 @@ async function initOnDeckPage() {
           <div class="progress-label">Day ${daysSince} of 30</div>
         </div>
         <div class="confidence-info">${album.outletsReviewed ?? album.reviewCount} of ${album.outletsTotal ?? 7} outlets reviewed</div>
-        ${album.criticScore !== null ? `<div style="margin-top:8px;font-family:var(--font-mono);font-size:0.75rem;color:var(--color-text-secondary)">🎙️ Stage: ${album.criticScore}</div>` : ''}
-        ${album.crowdScore !== null ? `<div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--color-text-secondary)">👥 Crowd: ${album.crowdScore}</div>` : ''}
+        ${album.criticScore !== null ? `<div style="margin-top:8px;font-family:var(--font-mono);font-size:0.75rem;color:var(--color-text-secondary)">Stage ${album.criticScore} | Crowd ${album.crowdScore}</div>` : ''}
       `;
       card.appendChild(artWrap);
       card.appendChild(body);
       grid.appendChild(card);
     });
+
+    // Allow nav search to filter ondeck cards
+    window.__searchFilter = q => {
+      document.querySelectorAll('.ondeck-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = (!q || text.includes(q)) ? '' : 'none';
+      });
+    };
+
   } catch (e) {
     grid.innerHTML = `<div class="empty-state">Failed to load On Deck albums. ${e.message}</div>`;
   }
 }
 
-// ─── Debate page ─────────────────────────────────────────────────────
+// ─── Debate page ──────────────────────────────────────────────────────
 
 async function initDebatePage() {
   setActiveNav();
@@ -616,7 +641,7 @@ async function initDebatePage() {
   }
 }
 
-// ─── Nav toggle + search ─────────────────────────────────────────────
+// ─── Nav toggle + search ──────────────────────────────────────────────
 
 function initNavToggle() {
   const toggle = document.querySelector('.nav-toggle');

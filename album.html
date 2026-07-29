@@ -19,15 +19,11 @@
         <li><a href="debate.html">The Debate</a></li>
         <li><a href="howwescore.html">How We Score</a></li>
       </ul>
-      <div class="nav-right">
-        <button class="nav-search-btn" aria-label="Search">🔍</button>
-      </div>
+    </div>
+    <div class="nav-search-bar">
+      <input type="text" class="nav-search-input" placeholder="Search artists or albums…" autocomplete="off" spellcheck="false">
     </div>
   </nav>
-
-  <div class="search-bar">
-    <input class="search-input" type="text" placeholder="Search artist or album..." autocomplete="off" spellcheck="false">
-  </div>
 
   <a href="javascript:history.back()" class="back-link">← Back</a>
 
@@ -42,29 +38,19 @@
         <h1 class="album-hero-title"></h1>
         <div class="album-genre-tags"></div>
 
+        <!-- Unified score display (Fix 2) -->
         <div class="album-score-display">
-          <div class="album-combined-score">
-            <div class="tier-badge-slot"></div>
-            <div class="score-big">--</div>
-            <div class="score-label">Combined Score</div>
-          </div>
-
-          <hr class="score-divider">
-
-          <div class="album-sub-scores-row">
-            <div class="album-sub-score">
-              <div class="score-name">🎙️ The Stage</div>
-              <div class="score-num critic-score-num">--</div>
-              <div class="score-tier-small critic-tier-label"></div>
+          <div class="score-block score-block--large">
+            <div class="score-main-line">
+              <span class="score-tier-emoji album-tier-emoji"></span>
+              <span class="score-main-num score-big">--</span>
+              <span class="score-tier-label album-tier-label"></span>
             </div>
-            <div class="album-sub-score">
-              <div class="score-name">👥 The Crowd</div>
-              <div class="score-num crowd-score-num">--</div>
-              <div class="score-tier-small crowd-tier-label"></div>
+            <div class="score-sub-line score-sub-line--large">
+              Stage <span class="critic-score-num">--</span> &nbsp;|&nbsp; Crowd <span class="crowd-score-num">--</span>
             </div>
           </div>
-
-          <div class="album-gap-badge" style="text-align:center;margin-top:8px"></div>
+          <div class="album-gap-badge" style="margin-top:var(--space-sm);text-align:center"></div>
         </div>
 
       </div>
@@ -73,7 +59,6 @@
 
   <div class="container">
 
-    <!-- Frequency Meter -->
     <div class="frequency-meter" style="margin-bottom:var(--space-xl)">
       <div class="freq-bar"></div>
       <div class="freq-bar"></div>
@@ -84,7 +69,6 @@
       <div class="freq-bar"></div>
     </div>
 
-    <!-- On Deck Progress (hidden by default) -->
     <div class="ondeck-progress-section" style="display:none;background:var(--color-bg-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-lg);margin-bottom:var(--space-xl)">
       <div class="section-title">Score In Progress</div>
       <div style="margin-bottom:8px"><span class="ondeck-state-badge"></span></div>
@@ -94,7 +78,7 @@
       </div>
     </div>
 
-    <!-- Vibe Tap -->
+    <!-- Vibe Tap (Fix 6) -->
     <div class="vibe-tap-section">
       <div class="vibe-tap-label">What's your vibe?</div>
       <div class="vibe-stars">
@@ -104,21 +88,18 @@
         <span class="vibe-star" data-rating="4">⭐</span>
         <span class="vibe-star" data-rating="5">⭐</span>
       </div>
-      <div class="vibe-tap-avg">Tap a star to leave your vibe — no account needed</div>
+      <div class="vibe-tap-avg">Tap a star — no account needed</div>
+      <div class="vibe-confirmation"></div>
     </div>
 
-    <!-- Critic Breakdown -->
     <div class="critic-breakdown">
       <div class="section-title">🎙️ The Stage — Critic Breakdown</div>
-
       <div class="confidence-warning low-confidence-badge" style="display:none">
         ⚠️ Limited Data — fewer than 3 outlets reviewed
       </div>
-
       <p style="font-size:0.75rem;color:var(--color-text-muted);margin-bottom:var(--space-md)">
         Scores normalized to 0–100 for comparison
       </p>
-
       <div class="outlet-list-items"></div>
     </div>
 
