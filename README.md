@@ -76,3 +76,8 @@ If left empty, a placeholder emoji is shown instead.
 See FUTURE.md for planned features including live Spotify integration,
 Billboard API, Critic/Crowd Divide Leaderboard, Genre Health Index,
 Hall of Fame, and more.
+
+## Deploying Updates
+git -C ~/Desktop/music-site add .
+git -C ~/Desktop/music-site commit -m "describe your changes"
+git -C ~/Desktop/music-site push origin main
