@@ -17,7 +17,7 @@ async function fetchAlbumArt(artist, title) {
     const res = await fetch(`https://itunes.apple.com/search?term=${query}&media=music&entity=album&limit=1`);
     const data = await res.json();
     const raw = data.results?.[0]?.artworkUrl100 ?? null;
-    const url = raw ? raw.replace('100x100bb', '600x600bb') : null;
+    const url = raw ? raw.replace(/\d+x\d+bb/, '600x600bb') : null;
     _artCache.set(key, url);
     return url;
   } catch {

@@ -31,15 +31,16 @@ function buildArtEl(album) {
 
   // Fetch from iTunes and swap in when ready
   fetchAlbumArt(album.artist, album.title).then(url => {
-    if (!url || !placeholder.parentNode) return;
+    if (!url) return;
     const img = document.createElement('img');
-    img.src = url;
     img.alt = `${album.title} by ${album.artist}`;
     img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
-    img.onerror = () => {};
+    // Attach handlers before src so cached images don't miss onload
     img.onload = () => {
       if (placeholder.parentNode) placeholder.replaceWith(img);
     };
+    img.onerror = () => {};
+    img.src = url;
   });
 
   return placeholder;
@@ -237,11 +238,10 @@ async function initIndexPage() {
   try {
     const allAlbums = await getAllTimeRankings();
 
-    // Section 1: last 30 days by release_date, top 5
-    const cutoff = new Date();
-    cutoff.setDate(cutoff.getDate() - 30);
-    let recent = allAlbums
-      .filter(a => a.release_date && new Date(a.release_date) >= cutoff)
+    // Section 1: 5 most recently released scored albums, so section is never empty
+    let recent = [...allAlbums]
+      .filter(a => a.release_date)
+      .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
       .slice(0, 5);
 
     // Section 2: 2026 albums
