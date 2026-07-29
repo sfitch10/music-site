@@ -1239,3 +1239,333 @@ body::after {
 }
 
 .footer a:hover { color: var(--color-accent); }
+
+/* ─── Nav right + Search button ─── */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: var(--space-md);
+}
+
+.nav-search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  padding: 6px 8px;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), background var(--transition-fast);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.nav-search-btn:hover,
+.nav-search-btn.active {
+  color: var(--color-accent);
+  background: var(--color-bg-glass);
+}
+
+/* ─── Search bar ─── */
+.search-bar {
+  position: sticky;
+  top: 64px;
+  z-index: 99;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.search-bar.open {
+  max-height: 72px;
+  border-bottom-color: var(--color-border);
+}
+
+.search-input {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  margin: 12px auto;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.search-input:focus {
+  border-color: var(--color-primary-bright);
+}
+
+/* ─── Section divider (index page) ─── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin: var(--space-2xl) 0 var(--space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+}
+
+.section-divider-label {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Hero cards (index top-5) ─── */
+.hero-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: var(--space-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-card:hover {
+  transform: translateX(6px);
+  box-shadow: var(--glow-primary);
+  border-color: rgba(123, 47, 190, 0.5);
+}
+
+.hero-card-rank {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.hero-card:first-child .hero-card-rank {
+  color: gold;
+}
+
+.hero-card-art {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.hero-card-art img,
+.hero-card-art .album-art-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  font-size: 2rem;
+}
+
+.hero-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-card-artist {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.hero-card-score-wrap {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.hero-card-score {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.hero-card-score-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+
+/* ─── Ranked list (alltime + index year section) ─── */
+.ranked-list {
+  position: relative;
+  z-index: 1;
+  padding-bottom: var(--space-2xl);
+}
+
+.ranked-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 10px var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.ranked-row:hover {
+  background: var(--color-bg-elevated);
+}
+
+.ranked-row-rank {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.ranked-row-art {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ranked-row-art img,
+.ranked-row-art .album-art-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  font-size: 1.25rem;
+}
+
+.ranked-row-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ranked-row-artist {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ranked-row-title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ranked-row-score {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.ranked-row-tier {
+  font-size: 1rem;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+/* ─── Year filter tabs (alltime) ─── */
+.year-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.year-tab {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.year-tab:hover {
+  border-color: var(--color-primary-bright);
+  color: var(--color-text-primary);
+}
+
+.year-tab.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+/* ─── Responsive additions ─── */
+@media (max-width: 768px) {
+  .hero-card { padding: var(--space-md); gap: var(--space-md); }
+  .hero-card-score { font-size: 1.5rem; }
+  .hero-card-title { font-size: 0.9rem; }
+  .hero-card-art { width: 56px; height: 56px; }
+  .section-divider-label { font-size: 0.95rem; }
+  .ranked-row-score { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-card-rank { display: none; }
+  .ranked-row-tier { display: none; }
+}

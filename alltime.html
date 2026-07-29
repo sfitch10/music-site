@@ -13,14 +13,21 @@
       <a href="index.html" class="nav-logo">[LOGO] <span>[SITE NAME]</span></a>
       <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav-links">
-        <li><a href="index.html">Monthly</a></li>
+        <li><a href="index.html">Now</a></li>
         <li><a href="alltime.html">All-Time</a></li>
         <li><a href="ondeck.html">On Deck</a></li>
         <li><a href="debate.html">The Debate</a></li>
         <li><a href="howwescore.html">How We Score</a></li>
       </ul>
+      <div class="nav-right">
+        <button class="nav-search-btn" aria-label="Search">🔍</button>
+      </div>
     </div>
   </nav>
+
+  <div class="search-bar">
+    <input class="search-input" type="text" placeholder="Search artist or album..." autocomplete="off" spellcheck="false">
+  </div>
 
   <div class="container">
 
@@ -30,22 +37,17 @@
       <p class="hero-subtitle">Critic weight 60% · Crowd weight 40% — history has had more time to judge</p>
     </header>
 
-    <div class="filter-bar">
-      <div class="filter-group">
-        <span class="filter-label">Genre</span>
-        <div class="genre-pills" style="display:flex;flex-wrap:wrap;gap:6px"></div>
-      </div>
-      <div class="filter-group">
-        <span class="filter-label">Sort by</span>
-        <select class="sort-select">
-          <option value="combined">Combined Score</option>
-          <option value="critic">Critics' Score</option>
-          <option value="crowd">Crowd Score</option>
-        </select>
-      </div>
+    <div class="year-tabs">
+      <button class="year-tab active" data-year="all">All</button>
+      <button class="year-tab" data-year="2025">2025</button>
+      <button class="year-tab" data-year="2024">2024</button>
+      <button class="year-tab" data-year="2023">2023</button>
+      <button class="year-tab" data-year="2022">2022</button>
+      <button class="year-tab" data-year="2021">2021</button>
+      <button class="year-tab" data-year="2020">2020</button>
     </div>
 
-    <div class="album-grid"></div>
+    <div id="ranked-list" class="ranked-list"></div>
 
   </div>
 

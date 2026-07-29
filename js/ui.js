@@ -2,8 +2,8 @@
 
 import { setActiveNav, getAlbumIdFromUrl } from './router.js';
 import {
-  getTopAlbumsByMonth, getAllTimeRankings, getScoredOnDeckAlbums,
-  getCurrentDebate, getPastDebates, getScoredAlbum, getMatrix,
+  getAllTimeRankings, getScoredOnDeckAlbums,
+  getCurrentDebate, getScoredAlbum, getMatrix,
   getVibeTap, setVibeTap, getDebateVote, setDebateVote, getDebateTallies,
   getScoresForAlbum
 } from './dataService.js';
@@ -12,8 +12,7 @@ import {
 
 function getArtPlaceholder(title) {
   const emoji = ['🎵', '🎸', '🎹', '🎺', '🥁', '🎤', '🎧', '🎼'];
-  const idx = title.charCodeAt(0) % emoji.length;
-  return emoji[idx];
+  return emoji[title.charCodeAt(0) % emoji.length];
 }
 
 function buildArtEl(album) {
@@ -60,10 +59,7 @@ function countUp(el, target, duration = 800) {
 function observeCountUp(el, target) {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        countUp(el, target);
-        observer.unobserve(el);
-      }
+      if (entry.isIntersecting) { countUp(el, target); observer.unobserve(el); }
     });
   }, { threshold: 0.3 });
   observer.observe(el);
@@ -81,167 +77,194 @@ function staggerCards(cards) {
   });
 }
 
-// ─── Album card builder ─────────────────────────────────────────────
+function matchesQuery(album, query) {
+  if (!query) return true;
+  const q = query.toLowerCase();
+  return album.title.toLowerCase().includes(q) || album.artist.toLowerCase().includes(q);
+}
 
-function buildAlbumCard(album, rank) {
-  const a = document.createElement('a');
-  a.className = 'album-card';
-  a.href = `album.html?id=${encodeURIComponent(album.id)}`;
+// ─── Search ─────────────────────────────────────────────────────────
 
-  const artWrap = document.createElement('div');
-  artWrap.className = 'album-card-art';
-  artWrap.appendChild(buildArtEl(album));
+function initSearch() {
+  const btn = document.querySelector('.nav-search-btn');
+  const bar = document.querySelector('.search-bar');
+  const input = document.querySelector('.search-input');
+  if (!btn || !bar || !input) return;
 
-  const yearBadge = document.createElement('span');
-  yearBadge.className = 'album-year-badge';
-  yearBadge.textContent = album.year;
-  artWrap.appendChild(yearBadge);
-
-  if (rank !== undefined) {
-    const rankEl = document.createElement('span');
-    rankEl.className = 'album-rank';
-    rankEl.textContent = `#${rank}`;
-    artWrap.appendChild(rankEl);
+  function openBar() {
+    bar.classList.add('open');
+    btn.classList.add('active');
+    input.focus();
   }
 
-  const body = document.createElement('div');
-  body.className = 'album-card-body';
+  function closeBar() {
+    bar.classList.remove('open');
+    btn.classList.remove('active');
+    input.value = '';
+    window.__searchFilter?.('');
+  }
 
-  const artist = document.createElement('div');
-  artist.className = 'album-artist';
-  artist.textContent = album.artist;
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    bar.classList.contains('open') ? closeBar() : openBar();
+  });
 
-  const title = document.createElement('div');
-  title.className = 'album-title';
-  title.textContent = album.title;
+  input.addEventListener('input', () => {
+    window.__searchFilter?.(input.value.trim().toLowerCase());
+  });
 
-  const scoreEl = document.createElement('div');
-  scoreEl.className = 'album-score-main';
-  const scoreNum = document.createElement('span');
-  scoreNum.className = 'score-number';
-  scoreNum.textContent = album.combinedScore ?? '--';
-  scoreEl.appendChild(scoreNum);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeBar();
+  });
 
-  const tierEl = document.createElement('div');
-  tierEl.style.display = 'flex';
-  tierEl.style.justifyContent = 'center';
-  tierEl.innerHTML = tierBadgeHTML(album.tier);
+  document.addEventListener('click', e => {
+    if (bar.classList.contains('open') && !bar.contains(e.target) && !btn.contains(e.target)) {
+      closeBar();
+    }
+  });
+}
 
-  const subScores = document.createElement('div');
-  subScores.className = 'sub-scores';
-  subScores.innerHTML = `
-    <div class="sub-score">
-      <div class="sub-score-label">🎙️ The Stage</div>
-      <div class="sub-score-value">${album.criticScore ?? '--'}</div>
-      <div class="sub-score-tier">${album.criticTier?.label ?? ''}</div>
-    </div>
-    <div class="sub-score">
-      <div class="sub-score-label">👥 The Crowd</div>
-      <div class="sub-score-value">${album.crowdScore ?? '--'}</div>
-      <div class="sub-score-tier">${album.crowdTier?.label ?? ''}</div>
-    </div>
+// ─── Hero card (index top-5) ────────────────────────────────────────
+
+function buildHeroCard(album, rank) {
+  const a = document.createElement('a');
+  a.className = 'hero-card';
+  a.href = `album.html?id=${encodeURIComponent(album.id)}`;
+  a.dataset.artist = album.artist.toLowerCase();
+  a.dataset.title = album.title.toLowerCase();
+
+  const artEl = document.createElement('div');
+  artEl.className = 'hero-card-art';
+  artEl.appendChild(buildArtEl(album));
+
+  const rankEl = document.createElement('div');
+  rankEl.className = 'hero-card-rank';
+  rankEl.textContent = `#${rank}`;
+
+  const info = document.createElement('div');
+  info.className = 'hero-card-info';
+  info.innerHTML = `
+    <div class="hero-card-artist">${album.artist}</div>
+    <div class="hero-card-title">${album.title}</div>
+    <div style="margin-top:6px">${tierBadgeHTML(album.tier)}</div>
   `;
 
-  const gapEl = document.createElement('div');
-  gapEl.style.textAlign = 'center';
-  gapEl.innerHTML = gapBadgeHTML(album.gapBadge);
+  const scoreWrap = document.createElement('div');
+  scoreWrap.className = 'hero-card-score-wrap';
+  const scoreNum = document.createElement('div');
+  scoreNum.className = 'hero-card-score';
+  scoreNum.textContent = album.combinedScore ?? '--';
+  const scoreLabel = document.createElement('div');
+  scoreLabel.className = 'hero-card-score-label';
+  scoreLabel.textContent = 'Combined';
+  scoreWrap.appendChild(scoreNum);
+  scoreWrap.appendChild(scoreLabel);
 
-  body.appendChild(artist);
-  body.appendChild(title);
-  body.appendChild(scoreEl);
-  body.appendChild(tierEl);
-  body.appendChild(subScores);
-  if (album.gapBadge) body.appendChild(gapEl);
+  a.appendChild(rankEl);
+  a.appendChild(artEl);
+  a.appendChild(info);
+  a.appendChild(scoreWrap);
 
-  a.appendChild(artWrap);
-  a.appendChild(body);
-
-  // Count-up animation
   observeCountUp(scoreNum, album.combinedScore);
-
   return a;
 }
 
-// ─── Filter/Sort bar ────────────────────────────────────────────────
+// ─── Ranked list row (alltime + index section 2) ────────────────────
 
-function buildFilterBar(albums, onFilter) {
-  const bar = document.querySelector('.filter-bar');
-  if (!bar) return;
+function buildRankedRow(album, rank) {
+  const a = document.createElement('a');
+  a.className = 'ranked-row';
+  a.href = `album.html?id=${encodeURIComponent(album.id)}`;
+  a.dataset.artist = album.artist.toLowerCase();
+  a.dataset.title = album.title.toLowerCase();
 
-  const genres = [...new Set(albums.flatMap(a => a.genre))].sort();
-  let activeGenres = new Set();
-  let activeSort = 'combined';
+  const thumb = document.createElement('div');
+  thumb.className = 'ranked-row-art';
+  thumb.appendChild(buildArtEl(album));
 
-  const genreGroup = bar.querySelector('.genre-pills');
-  if (genreGroup) {
-    genres.forEach(g => {
-      const btn = document.createElement('button');
-      btn.className = 'filter-pill';
-      btn.textContent = g;
-      btn.addEventListener('click', () => {
-        if (activeGenres.has(g)) { activeGenres.delete(g); btn.classList.remove('active'); }
-        else { activeGenres.add(g); btn.classList.add('active'); }
-        onFilter(activeGenres, activeSort);
-      });
-      genreGroup.appendChild(btn);
-    });
-  }
+  const scoreNum = document.createElement('div');
+  scoreNum.className = 'ranked-row-score';
+  scoreNum.textContent = album.combinedScore ?? '--';
 
-  const sortSelect = bar.querySelector('.sort-select');
-  if (sortSelect) {
-    sortSelect.addEventListener('change', e => {
-      activeSort = e.target.value;
-      onFilter(activeGenres, activeSort);
-    });
-  }
+  a.innerHTML = `<span class="ranked-row-rank">${rank}</span>`;
+  a.appendChild(thumb);
+  a.insertAdjacentHTML('beforeend', `
+    <div class="ranked-row-info">
+      <div class="ranked-row-artist">${album.artist}</div>
+      <div class="ranked-row-title">${album.title}</div>
+    </div>
+  `);
+  a.appendChild(scoreNum);
+  a.insertAdjacentHTML('beforeend',
+    `<div class="ranked-row-tier">${album.tier ? `${album.tier.emoji}` : ''}</div>`
+  );
+
+  observeCountUp(scoreNum, album.combinedScore);
+  return a;
 }
 
-function filterAndSort(albums, genres, sortKey) {
-  let result = [...albums];
-  if (genres.size > 0) {
-    result = result.filter(a => a.genre && a.genre.some(g => genres.has(g)));
-  }
-  result.sort((a, b) => {
-    if (sortKey === 'critic') return (b.criticScore ?? -1) - (a.criticScore ?? -1);
-    if (sortKey === 'crowd')  return (b.crowdScore  ?? -1) - (a.crowdScore  ?? -1);
-    return (b.combinedScore ?? -1) - (a.combinedScore ?? -1);
-  });
-  return result;
-}
-
-function renderGrid(container, albums, showRank) {
+function renderRankedList(container, albums) {
   container.innerHTML = '';
   if (albums.length === 0) {
-    container.innerHTML = '<div class="empty-state">No albums match this filter.</div>';
+    container.innerHTML = '<div class="empty-state">No albums found.</div>';
     return;
   }
-  const cards = albums.map((album, i) => buildAlbumCard(album, showRank ? i + 1 : undefined));
-  cards.forEach(c => container.appendChild(c));
-  staggerCards(cards);
+  albums.forEach((album, i) => container.appendChild(buildRankedRow(album, i + 1)));
 }
 
 // ─── Index page ─────────────────────────────────────────────────────
 
 async function initIndexPage() {
   setActiveNav();
-  const grid = document.querySelector('.album-grid');
-  if (!grid) return;
 
-  grid.innerHTML = '<div class="loading">Loading setlist</div>';
+  const recentSection = document.getElementById('recent-section');
+  const yearSection = document.getElementById('year-section');
+  if (!recentSection || !yearSection) return;
+
+  recentSection.innerHTML = '<div class="loading">Loading</div>';
 
   try {
-    const now = new Date();
-    const albums = await getTopAlbumsByMonth(now.getMonth() + 1, now.getFullYear());
-    let current = [...albums];
+    const allAlbums = await getAllTimeRankings();
 
-    buildFilterBar(albums, (genres, sort) => {
-      current = filterAndSort(albums, genres, sort);
-      renderGrid(grid, current, false);
-    });
+    // Section 1: last 30 days by release_date, top 5
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 30);
+    let recent = allAlbums
+      .filter(a => a.release_date && new Date(a.release_date) >= cutoff)
+      .slice(0, 5);
 
-    renderGrid(grid, current, false);
+    // Section 2: 2026 albums
+    let year2026 = allAlbums.filter(a => a.year === 2026);
+
+    function renderSections(query) {
+      // Recent
+      recentSection.innerHTML = '';
+      const filteredRecent = query ? recent.filter(a => matchesQuery(a, query)) : recent;
+      if (filteredRecent.length === 0) {
+        recentSection.innerHTML = query
+          ? '<div class="empty-state">No recent releases match that search.</div>'
+          : '<div class="empty-state">No new releases in the last 30 days.</div>';
+      } else {
+        filteredRecent.forEach((album, i) => recentSection.appendChild(buildHeroCard(album, i + 1)));
+      }
+
+      // 2026
+      yearSection.innerHTML = '';
+      const filtered2026 = query ? year2026.filter(a => matchesQuery(a, query)) : year2026;
+      if (filtered2026.length === 0) {
+        yearSection.innerHTML = query
+          ? '<div class="empty-state">No 2026 albums match that search.</div>'
+          : '<div class="empty-state">No 2026 albums scored yet.</div>';
+      } else {
+        renderRankedList(yearSection, filtered2026);
+      }
+    }
+
+    renderSections('');
+    window.__searchFilter = renderSections;
+
   } catch (e) {
-    grid.innerHTML = `<div class="empty-state">Failed to load albums. ${e.message}</div>`;
+    recentSection.innerHTML = `<div class="empty-state">Failed to load albums. ${e.message}</div>`;
   }
 }
 
@@ -249,23 +272,41 @@ async function initIndexPage() {
 
 async function initAlltimePage() {
   setActiveNav();
-  const grid = document.querySelector('.album-grid');
-  if (!grid) return;
 
-  grid.innerHTML = '<div class="loading">Loading rankings</div>';
+  const list = document.getElementById('ranked-list');
+  if (!list) return;
+
+  list.innerHTML = '<div class="loading">Loading rankings</div>';
 
   try {
-    const albums = await getAllTimeRankings();
-    let current = [...albums];
+    const allAlbums = await getAllTimeRankings();
+    let activeYear = 'all';
+    let activeQuery = '';
 
-    buildFilterBar(albums, (genres, sort) => {
-      current = filterAndSort(albums, genres, sort);
-      renderGrid(grid, current, true);
+    function applyFilter() {
+      const filtered = allAlbums.filter(a => {
+        const yearMatch = activeYear === 'all' || String(a.year) === activeYear;
+        const queryMatch = matchesQuery(a, activeQuery);
+        return yearMatch && queryMatch;
+      });
+      renderRankedList(list, filtered);
+    }
+
+    // Year tabs
+    document.querySelectorAll('.year-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeYear = tab.dataset.year;
+        applyFilter();
+      });
     });
 
-    renderGrid(grid, current, true);
+    applyFilter();
+    window.__searchFilter = q => { activeQuery = q; applyFilter(); };
+
   } catch (e) {
-    grid.innerHTML = `<div class="empty-state">Failed to load rankings. ${e.message}</div>`;
+    list.innerHTML = `<div class="empty-state">Failed to load rankings. ${e.message}</div>`;
   }
 }
 
@@ -282,17 +323,14 @@ async function initAlbumPage() {
 
     document.title = `${album.title} — ${album.artist}`;
 
-    // Hero background
     const heroBg = document.querySelector('.album-hero-bg');
     if (heroBg && album.cover_art_url) {
       heroBg.style.backgroundImage = `url(${album.cover_art_url})`;
     }
 
-    // Art
     const artEl = document.querySelector('.album-hero-art');
     if (artEl) artEl.appendChild(buildArtEl(album));
 
-    // Info
     const artistEl = document.querySelector('.album-hero-artist');
     if (artistEl) artistEl.textContent = album.artist;
 
@@ -309,7 +347,6 @@ async function initAlbumPage() {
       });
     }
 
-    // Score display
     const tierEl = document.querySelector('.album-combined-score .tier-badge-slot');
     if (tierEl) tierEl.innerHTML = tierBadgeHTML(album.tier);
 
@@ -331,16 +368,10 @@ async function initAlbumPage() {
     const gapEl = document.querySelector('.album-gap-badge');
     if (gapEl) gapEl.innerHTML = gapBadgeHTML(album.gapBadge);
 
-    // Frequency meter
     renderFrequencyMeter(album.combinedScore, album.tier);
-
-    // Critic breakdown
     await renderCriticBreakdown(id, album);
-
-    // Vibe tap
     renderVibeTap(id);
 
-    // On Deck state
     if (album.status === 'ondeck' && album.onDeckState) {
       const ondeckEl = document.querySelector('.ondeck-progress-section');
       if (ondeckEl) {
@@ -364,22 +395,16 @@ async function initAlbumPage() {
 function renderFrequencyMeter(score, tier) {
   const meter = document.querySelector('.frequency-meter');
   if (!meter) return;
-
   const bars = meter.querySelectorAll('.freq-bar');
   const s = score ?? 0;
   const tierColors = {
-    certified_banger: 'var(--tier-banger)',
-    absolute_slapper: 'var(--tier-slapper)',
-    hard_rotation:    'var(--tier-rotation)',
-    mid_season:       'var(--tier-mid)',
-    deep_cut:         'var(--tier-deep)'
+    certified_banger: 'var(--tier-banger)', absolute_slapper: 'var(--tier-slapper)',
+    hard_rotation: 'var(--tier-rotation)', mid_season: 'var(--tier-mid)', deep_cut: 'var(--tier-deep)'
   };
   const color = tier ? (tierColors[tier.key] ?? 'var(--color-primary)') : 'var(--color-primary)';
-
   const heights = [0.5, 0.7, 1.0, 0.85, 0.6, 0.8, 0.45];
   bars.forEach((bar, i) => {
-    const h = Math.round(heights[i] * (s / 100) * 40) + 4;
-    bar.style.height = `${h}px`;
+    bar.style.height = `${Math.round(heights[i] * (s / 100) * 40) + 4}px`;
     bar.style.background = color;
   });
 }
@@ -387,37 +412,27 @@ function renderFrequencyMeter(score, tier) {
 async function renderCriticBreakdown(id, album) {
   const section = document.querySelector('.critic-breakdown');
   if (!section) return;
-
   const matrix = await getMatrix();
   const scores = await getScoresForAlbum(id);
   const list = section.querySelector('.outlet-list-items');
   if (!list || !scores) return;
 
-  const outlets = matrix.critic_score.inputs;
-
   if (album.lowConfidence) {
     section.querySelector('.confidence-warning')?.style.removeProperty('display');
   }
 
-  for (const [outlet, config] of Object.entries(outlets)) {
+  for (const [outlet, config] of Object.entries(matrix.critic_score.inputs)) {
     const raw = scores.critic_inputs[outlet];
     if (raw === null || raw === undefined) continue;
-
-    let rawDisplay = raw;
-    let normalized = null;
-
+    let rawDisplay = raw, normalized = null;
     if (config.scale === '0-10') {
-      normalized = Math.round((raw / 10) * 100);
-      rawDisplay = raw + '/10';
+      normalized = Math.round((raw / 10) * 100); rawDisplay = raw + '/10';
     } else if (config.scale === '1-5 stars') {
-      normalized = Math.round(((raw - 1) / 4) * 100);
-      rawDisplay = '★'.repeat(Math.round(raw));
+      normalized = Math.round(((raw - 1) / 4) * 100); rawDisplay = '★'.repeat(Math.round(raw));
     } else if (config.scale === 'A-F letter') {
       const grades = { 'A+': 100, 'A': 96, 'A-': 92, 'B+': 88, 'B': 83, 'B-': 78, 'C+': 72, 'C': 67, 'C-': 62, 'D+': 58, 'D': 52, 'D-': 45, 'F': 30 };
-      normalized = grades[String(raw).trim().toUpperCase()] ?? null;
-      rawDisplay = raw;
+      normalized = grades[String(raw).trim().toUpperCase()] ?? null; rawDisplay = raw;
     }
-
     const row = document.createElement('div');
     row.className = 'outlet-row';
     row.innerHTML = `
@@ -427,11 +442,8 @@ async function renderCriticBreakdown(id, album) {
       <span class="outlet-norm-score">${normalized ?? '--'}</span>
     `;
     list.appendChild(row);
-
     if (normalized !== null) {
-      setTimeout(() => {
-        row.querySelector('.outlet-norm-fill').style.width = `${normalized}%`;
-      }, 100);
+      setTimeout(() => { row.querySelector('.outlet-norm-fill').style.width = `${normalized}%`; }, 100);
     }
   }
 }
@@ -439,15 +451,11 @@ async function renderCriticBreakdown(id, album) {
 function renderVibeTap(albumId) {
   const section = document.querySelector('.vibe-tap-section');
   if (!section) return;
-
   const stars = section.querySelectorAll('.vibe-star');
   const avgEl = section.querySelector('.vibe-tap-avg');
   const existing = getVibeTap(albumId);
 
-  function highlight(n) {
-    stars.forEach((s, i) => s.classList.toggle('active', i < n));
-  }
-
+  function highlight(n) { stars.forEach((s, i) => s.classList.toggle('active', i < n)); }
   if (existing) highlight(existing);
 
   stars.forEach((star, i) => {
@@ -460,7 +468,6 @@ function renderVibeTap(albumId) {
       if (avgEl) avgEl.textContent = `Your vibe: ${rating}/5 — saved`;
     });
   });
-
   if (avgEl && existing) avgEl.textContent = `Your vibe: ${existing}/5 — saved`;
 }
 
@@ -470,38 +477,30 @@ async function initOnDeckPage() {
   setActiveNav();
   const grid = document.querySelector('.ondeck-grid');
   if (!grid) return;
-
   grid.innerHTML = '<div class="loading">Loading On Deck</div>';
 
   try {
     const albums = await getScoredOnDeckAlbums();
-
     if (albums.length === 0) {
       grid.innerHTML = '<div class="empty-state">No albums currently On Deck.</div>';
       return;
     }
-
     grid.innerHTML = '';
     albums.forEach(album => {
       const daysSince = album.onDeckState?.daysSince ?? 0;
       const progress = Math.min(100, (daysSince / 30) * 100);
-
       const card = document.createElement('a');
       card.className = 'ondeck-card';
       card.href = `album.html?id=${encodeURIComponent(album.id)}`;
-
       const artWrap = document.createElement('div');
       artWrap.className = 'album-card-art';
       artWrap.appendChild(buildArtEl(album));
-
       const body = document.createElement('div');
       body.style.padding = 'var(--space-md)';
       body.innerHTML = `
         <div class="album-artist">${album.artist}</div>
         <div class="album-title">${album.title}</div>
-        <div style="margin:8px 0">
-          <span class="ondeck-state-badge">${album.onDeckState?.emoji ?? '📡'} ${album.onDeckState?.label ?? 'Early Signal'}</span>
-        </div>
+        <div style="margin:8px 0"><span class="ondeck-state-badge">${album.onDeckState?.emoji ?? '📡'} ${album.onDeckState?.label ?? 'Early Signal'}</span></div>
         <div class="ondeck-progress">
           <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
           <div class="progress-label">Day ${daysSince} of 30</div>
@@ -510,12 +509,10 @@ async function initOnDeckPage() {
         ${album.criticScore !== null ? `<div style="margin-top:8px;font-family:var(--font-mono);font-size:0.75rem;color:var(--color-text-secondary)">🎙️ Stage: ${album.criticScore}</div>` : ''}
         ${album.crowdScore !== null ? `<div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--color-text-secondary)">👥 Crowd: ${album.crowdScore}</div>` : ''}
       `;
-
       card.appendChild(artWrap);
       card.appendChild(body);
       grid.appendChild(card);
     });
-
   } catch (e) {
     grid.innerHTML = `<div class="empty-state">Failed to load On Deck albums. ${e.message}</div>`;
   }
@@ -525,13 +522,11 @@ async function initOnDeckPage() {
 
 async function initDebatePage() {
   setActiveNav();
-
   try {
     const debateData = await getCurrentDebate();
     const current = debateData.current;
     const album = await getScoredAlbum(current.album_id, 'monthly');
 
-    // Album info
     const artEl = document.querySelector('.debate-album-art');
     if (artEl && album) artEl.appendChild(buildArtEl(album));
 
@@ -541,21 +536,17 @@ async function initDebatePage() {
       metaEl.querySelector('p').textContent = album.artist;
     }
 
-    // Gap display
     const gapEl = document.querySelector('.debate-gap-display');
     if (gapEl && album) {
       gapEl.innerHTML = `Critics say <span class="score-highlight">${album.criticScore ?? '--'}</span>. The Crowd says <span class="score-highlight">${album.crowdScore ?? '--'}</span>. Someone's wrong.`;
     }
 
-    // Arguments
     document.querySelector('.stage-argument')?.insertAdjacentText('afterbegin', current.stage_argument);
     document.querySelector('.crowd-argument')?.insertAdjacentText('afterbegin', current.crowd_argument);
 
-    // Voting
     const weekOf = current.week_of;
     const existingVote = getDebateVote(weekOf);
     const tallies = getDebateTallies(weekOf, current.votes.stage, current.votes.crowd);
-
     const stageBtn = document.querySelector('.vote-btn.stage');
     const crowdBtn = document.querySelector('.vote-btn.crowd');
     const voteBar = document.querySelector('.vote-bar-container');
@@ -565,10 +556,9 @@ async function initDebatePage() {
       voteBar.classList.add('visible');
       const total = t.stage + t.crowd;
       const stagePct = total > 0 ? Math.round((t.stage / total) * 100) : 50;
-      const crowdPct = 100 - stagePct;
       voteBar.querySelector('.vote-bar-stage').style.width = `${stagePct}%`;
       voteBar.querySelector('.vote-bar-labels').innerHTML =
-        `<span>🎙️ Stage ${stagePct}%</span><span>👥 Crowd ${crowdPct}%</span>`;
+        `<span>🎙️ Stage ${stagePct}%</span><span>👥 Crowd ${100 - stagePct}%</span>`;
     }
 
     if (existingVote) {
@@ -591,7 +581,6 @@ async function initDebatePage() {
       showVoteBar(getDebateTallies(weekOf, current.votes.stage, current.votes.crowd));
     });
 
-    // Archive
     const archiveGrid = document.querySelector('.archive-grid');
     const archive = debateData.archive ?? [];
     if (archiveGrid && archive.length > 0) {
@@ -611,19 +600,20 @@ async function initDebatePage() {
         archiveGrid.appendChild(card);
       }
     }
-
   } catch (e) {
     console.error(e);
   }
 }
 
-// ─── Nav toggle ──────────────────────────────────────────────────────
+// ─── Nav toggle + search ─────────────────────────────────────────────
 
 function initNavToggle() {
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
-  if (!toggle || !links) return;
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  if (toggle && links) {
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+  }
+  initSearch();
 }
 
 export {
