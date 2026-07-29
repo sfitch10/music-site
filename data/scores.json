@@ -604,6 +604,67 @@
       "critic_inputs": { "pitchfork": 7.0, "rolling_stone": 3.5, "nme": 4.0, "allmusic": null, "the_guardian": 3.5, "paste_magazine": 7.0, "consequence_of_sound": "B" },
       "crowd_inputs": { "streaming_data": 86, "sales_chart_performance": 88, "onsite_vibe_tap": null },
       "meta": { "critic_review_count": 6, "confidence": "medium", "last_updated": "2025-06-01" }
+    },
+
+    "bts-arirang-2026": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.0, "nme": 5.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.5, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 96, "sales_chart_performance": 97, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "olivia-rodrigo-you-seem-pretty-sad-2026": {
+      "critic_inputs": { "pitchfork": 9.5, "rolling_stone": 5.0, "nme": 5.0, "allmusic": 5.0, "the_guardian": 5.0, "paste_magazine": 9.5, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 94, "sales_chart_performance": 95, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "drake-iceman-2026": {
+      "critic_inputs": { "pitchfork": 6.5, "rolling_stone": 3.0, "nme": 3.5, "allmusic": 3.0, "the_guardian": 3.0, "paste_magazine": 6.5, "consequence_of_sound": "C+" },
+      "crowd_inputs": { "streaming_data": 92, "sales_chart_performance": 91, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "ella-langley-dandelion-2026": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 88, "sales_chart_performance": 87, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "noah-kahan-the-great-divide-2026": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.5, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 85, "sales_chart_performance": 85, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "raye-this-music-may-contain-hope-2026": {
+      "critic_inputs": { "pitchfork": 9.0, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 5.0, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 82, "sales_chart_performance": 81, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "robyn-sexistential-2026": {
+      "critic_inputs": { "pitchfork": 8.8, "rolling_stone": 4.5, "nme": 5.0, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 9.0, "consequence_of_sound": "A" },
+      "crowd_inputs": { "streaming_data": 83, "sales_chart_performance": 83, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "james-blake-trying-times-2026": {
+      "critic_inputs": { "pitchfork": 8.8, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.8, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 79, "sales_chart_performance": 78, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "gorillaz-the-mountain-2026": {
+      "critic_inputs": { "pitchfork": 8.5, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.5, "paste_magazine": 8.5, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 84, "sales_chart_performance": 84, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "baby-keem-tbd-2026": {
+      "critic_inputs": { "pitchfork": 8.2, "rolling_stone": 4.0, "nme": 4.0, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.2, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 83, "sales_chart_performance": 82, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "slayyyter-tbd-2026": {
+      "critic_inputs": { "pitchfork": 8.0, "rolling_stone": 4.0, "nme": 4.5, "allmusic": 4.0, "the_guardian": 4.0, "paste_magazine": 8.0, "consequence_of_sound": "B+" },
+      "crowd_inputs": { "streaming_data": 80, "sales_chart_performance": 79, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
+    },
+    "kacey-musgraves-tbd-2026": {
+      "critic_inputs": { "pitchfork": 8.8, "rolling_stone": 4.5, "nme": 4.5, "allmusic": 4.5, "the_guardian": 4.5, "paste_magazine": 8.8, "consequence_of_sound": "A-" },
+      "crowd_inputs": { "streaming_data": 85, "sales_chart_performance": 84, "onsite_vibe_tap": null },
+      "meta": { "critic_review_count": 7, "confidence": "high", "last_updated": "2026-07-01" }
     }
   }
 }

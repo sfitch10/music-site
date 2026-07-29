@@ -6,6 +6,26 @@ import { scoreAlbum } from './scoring.js';
 
 const BASE_PATH = '';
 
+// iTunes artwork cache — avoids re-fetching for repeated renders
+const _artCache = new Map();
+
+async function fetchAlbumArt(artist, title) {
+  const key = `${artist}__${title}`;
+  if (_artCache.has(key)) return _artCache.get(key);
+  try {
+    const query = encodeURIComponent(`${artist} ${title}`);
+    const res = await fetch(`https://itunes.apple.com/search?term=${query}&media=music&entity=album&limit=1`);
+    const data = await res.json();
+    const raw = data.results?.[0]?.artworkUrl100 ?? null;
+    const url = raw ? raw.replace('100x100bb', '600x600bb') : null;
+    _artCache.set(key, url);
+    return url;
+  } catch {
+    _artCache.set(key, null);
+    return null;
+  }
+}
+
 let _albumsCache = null;
 let _scoresCache = null;
 let _matrixCache = null;
@@ -151,6 +171,7 @@ async function getScoredCatalog(rankingType = 'monthly') {
 }
 
 export {
+  fetchAlbumArt,
   getAllAlbums,
   getAlbumById,
   getScoresForAlbum,

@@ -5,14 +5,16 @@ import {
   getAllTimeRankings, getScoredOnDeckAlbums,
   getCurrentDebate, getScoredAlbum, getMatrix,
   getVibeTap, setVibeTap, getDebateVote, setDebateVote, getDebateTallies,
-  getScoresForAlbum
+  getScoresForAlbum, fetchAlbumArt
 } from './dataService.js';
 
 // ─── Shared utilities ───────────────────────────────────────────────
 
-function getArtPlaceholder(title) {
-  const emoji = ['🎵', '🎸', '🎹', '🎺', '🥁', '🎤', '🎧', '🎼'];
-  return emoji[title.charCodeAt(0) % emoji.length];
+function buildPlaceholder(album) {
+  const div = document.createElement('div');
+  div.className = 'album-art-placeholder';
+  div.textContent = (album.title || 'A')[0].toUpperCase();
+  return div;
 }
 
 function buildArtEl(album) {
@@ -24,14 +26,23 @@ function buildArtEl(album) {
     img.onerror = () => { img.replaceWith(buildPlaceholder(album)); };
     return img;
   }
-  return buildPlaceholder(album);
-}
 
-function buildPlaceholder(album) {
-  const div = document.createElement('div');
-  div.className = 'album-art-placeholder';
-  div.textContent = getArtPlaceholder(album.title);
-  return div;
+  const placeholder = buildPlaceholder(album);
+
+  // Fetch from iTunes and swap in when ready
+  fetchAlbumArt(album.artist, album.title).then(url => {
+    if (!url || !placeholder.parentNode) return;
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = `${album.title} by ${album.artist}`;
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    img.onerror = () => {};
+    img.onload = () => {
+      if (placeholder.parentNode) placeholder.replaceWith(img);
+    };
+  });
+
+  return placeholder;
 }
 
 function tierBadgeHTML(tier) {
