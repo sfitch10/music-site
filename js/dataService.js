@@ -2,7 +2,7 @@
 // TODAY: reads from /data/*.json
 // FUTURE: calls /api/spotify.js, /api/billboard.js, /api/critics.js
 
-import { scoreAlbum } from './scoring.js';
+import { scoreAlbum } from './scoring.js?v=5';
 
 const BASE_PATH = '';
 

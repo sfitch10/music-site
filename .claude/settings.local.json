@@ -15,7 +15,20 @@
       "Bash(git -C ~/Desktop/music-site commit -m \"update README with deploy instructions\")",
       "Bash(git -C ~/Desktop/music-site push origin main)",
       "Bash(git -C ~/Desktop/music-site add js/ui.js js/dataService.js)",
-      "Bash(git -C ~/Desktop/music-site commit -m \"fix: show 5 most recent albums on home, fix iTunes art onload order\")"
+      "Bash(git -C ~/Desktop/music-site commit -m \"fix: show 5 most recent albums on home, fix iTunes art onload order\")",
+      "Bash(git -C ~/Desktop/music-site add js/dataService.js)",
+      "Bash(git -C ~/Desktop/music-site commit -m \"cache bust: bump to ?v=3\")",
+      "Bash(git -C ~/Desktop/music-site add js/dataService.js index.html)",
+      "Bash(git -C ~/Desktop/music-site commit -m \"cache bust: bump to ?v=4, add no-cache meta to index.html\")",
+      "Bash(git -C ~/Desktop/music-site commit -m \"fix: add cache: no-store to JSON fetches to bypass browser cache\")",
+      "Bash(git -C ~/Desktop/music-site add js/dataService.js js/ui.js)",
+      "Bash(git -C ~/Desktop/music-site commit -m \"fix: remove stale in-memory cache from all JSON fetches, remove debug logs\")",
+      "Bash(sed -i '' \"s|from './js/ui.js'|from './js/ui.js?v=5'|g\" index.html alltime.html album.html debate.html ondeck.html howwescore.html)",
+      "Bash(sed -i '' \"s|from './js/router.js'|from './js/router.js?v=5'|g\" howwescore.html)",
+      "Bash(sed -i '' \"s|from './router.js'|from './router.js?v=5'|g\" js/ui.js)",
+      "Bash(sed -i '' \"s|from './dataService.js'|from './dataService.js?v=5'|g\" js/ui.js)",
+      "Bash(sed -i '' \"s|from './scoring.js'|from './scoring.js?v=5'|g\" js/dataService.js)",
+      "Bash(git -C ~/Desktop/music-site commit -m \"cache bust: add ?v=5 to all JS module imports across HTML and JS files\")"
     ]
   }
 }
