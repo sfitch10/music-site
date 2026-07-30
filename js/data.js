@@ -1,5 +1,5 @@
 // All data flows through here. The UI never reads JSON directly.
-// TODAY: reads from /data/*.json
+// TODAY: reads from /*.json
 // FUTURE: calls /api/spotify.js, /api/billboard.js, /api/critics.js
 
 import { scoreAlbum } from './scoring.js?v=5';
@@ -27,7 +27,7 @@ async function fetchAlbumArt(artist, title) {
 }
 
 async function _fetchJSON(path) {
-  const res = await fetch(BASE_PATH + path + '?v=4', { cache: 'no-store' });
+  const res = await fetch(BASE_PATH + path + '?v=5', { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);
   return res.json();
 }
@@ -124,7 +124,6 @@ function getDebateVote(weekOf) {
 function setDebateVote(weekOf, side) {
   try {
     localStorage.setItem(`debate_vote_${weekOf}`, side);
-    // Tally locally
     const stageKey = `debate_tally_stage_${weekOf}`;
     const crowdKey = `debate_tally_crowd_${weekOf}`;
     if (side === 'stage') {

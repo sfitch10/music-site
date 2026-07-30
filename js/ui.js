@@ -6,7 +6,7 @@ import {
   getCurrentDebate, getScoredAlbum, getMatrix,
   getVibeTap, setVibeTap, getDebateVote, setDebateVote, getDebateTallies,
   getScoresForAlbum, fetchAlbumArt
-} from './dataService.js?v=5';
+} from './data.js?v=5';
 
 // ─── Art helpers ─────────────────────────────────────────────────────
 

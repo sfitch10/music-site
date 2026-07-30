@@ -28,7 +28,9 @@
       "Bash(sed -i '' \"s|from './router.js'|from './router.js?v=5'|g\" js/ui.js)",
       "Bash(sed -i '' \"s|from './dataService.js'|from './dataService.js?v=5'|g\" js/ui.js)",
       "Bash(sed -i '' \"s|from './scoring.js'|from './scoring.js?v=5'|g\" js/dataService.js)",
-      "Bash(git -C ~/Desktop/music-site commit -m \"cache bust: add ?v=5 to all JS module imports across HTML and JS files\")"
+      "Bash(git -C ~/Desktop/music-site commit -m \"cache bust: add ?v=5 to all JS module imports across HTML and JS files\")",
+      "Bash(git -C ~/Desktop/music-site add -A)",
+      "Bash(git -C ~/Desktop/music-site commit -m \"rename dataService.js to data.js, remove all in-memory caches\")"
     ]
   }
 }
