@@ -220,10 +220,11 @@ async function initIndexPage() {
     const allAlbums = await getAllTimeRankings();
 
     // 5 most recently released scored albums, purely by release_date descending
-    let recent = [...allAlbums]
+    const sortedByDate = [...allAlbums]
       .filter(a => a.release_date)
-      .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
-      .slice(0, 5);
+      .sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    console.log('[DEBUG] Top 10 by release_date:', sortedByDate.slice(0, 10).map(a => `${a.release_date} | ${a.year} | ${a.status} | ${a.artist} — ${a.title}`));
+    let recent = sortedByDate.slice(0, 5);
 
     // 2026 albums — strict number comparison
     let year2026 = allAlbums
