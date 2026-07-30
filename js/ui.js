@@ -219,17 +219,15 @@ async function initIndexPage() {
   try {
     const allAlbums = await getAllTimeRankings();
 
-    // Fix 1: take 10 most recently released, then pick top 5 by combined score
+    // 5 most recently released scored albums, purely by release_date descending
     let recent = [...allAlbums]
       .filter(a => a.release_date)
       .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
-      .slice(0, 10)
-      .sort((a, b) => (b.combinedScore ?? 0) - (a.combinedScore ?? 0))
       .slice(0, 5);
 
-    // Fix 3: use Number() coercion so "2026" string never causes a miss
+    // 2026 albums — strict number comparison
     let year2026 = allAlbums
-      .filter(a => Number(a.year) === 2026)
+      .filter(a => a.year === 2026)
       .sort((a, b) => (b.combinedScore ?? 0) - (a.combinedScore ?? 0));
 
     function renderSections(query) {
@@ -273,7 +271,7 @@ async function initAlltimePage() {
 
     function applyFilter() {
       const filtered = allAlbums.filter(a => {
-        const yearMatch = activeYear === 'all' || Number(a.year) === Number(activeYear);
+        const yearMatch = activeYear === 'all' || a.year === Number(activeYear);
         return yearMatch && matchesQuery(a, activeQuery);
       });
       renderRankedList(list, filtered);
@@ -501,6 +499,44 @@ function renderVibeTap(albumId) {
 
 // ─── On Deck page ─────────────────────────────────────────────────────
 
+function buildOnDeckCard(album, label, sublabel) {
+  const card = document.createElement('a');
+  card.className = 'ondeck-card';
+  card.href = `album.html?id=${encodeURIComponent(album.id)}`;
+
+  const artWrap = document.createElement('div');
+  artWrap.className = 'album-card-art';
+  artWrap.appendChild(buildArtEl(album));
+
+  const body = document.createElement('div');
+  body.style.padding = 'var(--space-md)';
+
+  const stateHTML = album.onDeckState
+    ? `<span class="ondeck-state-badge">${album.onDeckState.emoji} ${album.onDeckState.label}</span>`
+    : '';
+
+  const reviewsReviewed = album.outletsReviewed ?? 0;
+  const reviewsTotal = album.outletsTotal ?? 7;
+
+  body.innerHTML = `
+    <div class="album-artist">${album.artist}</div>
+    <div class="album-title">${album.title}</div>
+    <div style="margin:6px 0 4px">${stateHTML}</div>
+    <div class="ondeck-date-label">${label}</div>
+    ${sublabel ? `<div class="confidence-info">${sublabel}</div>` : ''}
+    ${reviewsReviewed > 0 ? `
+      <div class="ondeck-progress" style="margin-top:8px">
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${Math.min(100, (reviewsReviewed / reviewsTotal) * 100)}%"></div></div>
+        <div class="progress-label">${reviewsReviewed} of ${reviewsTotal} outlets reviewed</div>
+      </div>
+    ` : `<div class="confidence-info" style="margin-top:6px">No reviews yet</div>`}
+  `;
+
+  card.appendChild(artWrap);
+  card.appendChild(body);
+  return card;
+}
+
 async function initOnDeckPage() {
   setActiveNav();
   const grid = document.querySelector('.ondeck-grid');
@@ -509,43 +545,65 @@ async function initOnDeckPage() {
 
   try {
     const albums = await getScoredOnDeckAlbums();
-    if (albums.length === 0) {
-      grid.innerHTML = '<div class="empty-state">No albums currently On Deck.</div>';
+    const today = new Date();
+    const cutoff = new Date(today);
+    cutoff.setDate(today.getDate() - 14);
+
+    const comingSoon = albums
+      .filter(a => a.release_date && new Date(a.release_date + 'T12:00:00') > today)
+      .sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+
+    const justDropped = albums
+      .filter(a => {
+        if (!a.release_date) return false;
+        const d = new Date(a.release_date + 'T12:00:00');
+        return d <= today && d >= cutoff;
+      })
+      .sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+
+    if (comingSoon.length === 0 && justDropped.length === 0) {
+      grid.innerHTML = '<div class="empty-state">Nothing on deck right now.</div>';
       return;
     }
+
     grid.innerHTML = '';
-    albums.forEach(album => {
-      const daysSince = album.onDeckState?.daysSince ?? 0;
-      const progress = Math.min(100, (daysSince / 30) * 100);
-      const card = document.createElement('a');
-      card.className = 'ondeck-card';
-      card.href = `album.html?id=${encodeURIComponent(album.id)}`;
-      const artWrap = document.createElement('div');
-      artWrap.className = 'album-card-art';
-      artWrap.appendChild(buildArtEl(album));
-      const body = document.createElement('div');
-      body.style.padding = 'var(--space-md)';
-      body.innerHTML = `
-        <div class="album-artist">${album.artist}</div>
-        <div class="album-title">${album.title}</div>
-        <div style="margin:8px 0"><span class="ondeck-state-badge">${album.onDeckState?.emoji ?? '📡'} ${album.onDeckState?.label ?? 'Early Signal'}</span></div>
-        <div class="ondeck-progress">
-          <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
-          <div class="progress-label">Day ${daysSince} of 30</div>
-        </div>
-        <div class="confidence-info">${album.outletsReviewed ?? album.reviewCount} of ${album.outletsTotal ?? 7} outlets reviewed</div>
-        ${album.criticScore !== null ? `<div style="margin-top:8px;font-family:var(--font-mono);font-size:0.75rem;color:var(--color-text-secondary)">Stage ${album.criticScore} | Crowd ${album.crowdScore}</div>` : ''}
-      `;
-      card.appendChild(artWrap);
-      card.appendChild(body);
-      grid.appendChild(card);
+
+    function addGroup(title, items, buildLabel) {
+      if (items.length === 0) return;
+      const heading = document.createElement('div');
+      heading.className = 'ondeck-group-title';
+      heading.textContent = title;
+      grid.appendChild(heading);
+
+      const group = document.createElement('div');
+      group.className = 'ondeck-group-grid';
+      items.forEach(album => {
+        const { label, sublabel } = buildLabel(album);
+        group.appendChild(buildOnDeckCard(album, label, sublabel));
+      });
+      grid.appendChild(group);
+    }
+
+    addGroup('Coming Soon', comingSoon, album => {
+      const d = new Date(album.release_date + 'T12:00:00');
+      return {
+        label: `Releases ${d.toLocaleString('default', { month: 'long', day: 'numeric' })}`,
+        sublabel: null
+      };
     });
 
-    // Allow nav search to filter ondeck cards
+    addGroup('Just Dropped', justDropped, album => {
+      const d = new Date(album.release_date + 'T12:00:00');
+      const days = Math.floor((today - d) / (1000 * 60 * 60 * 24));
+      return {
+        label: days === 0 ? 'Released today' : days === 1 ? 'Released yesterday' : `Released ${days} days ago`,
+        sublabel: null
+      };
+    });
+
     window.__searchFilter = q => {
       document.querySelectorAll('.ondeck-card').forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = (!q || text.includes(q)) ? '' : 'none';
+        card.style.display = (!q || card.textContent.toLowerCase().includes(q)) ? '' : 'none';
       });
     };
 
@@ -564,7 +622,7 @@ async function initDebatePage() {
     const album = await getScoredAlbum(current.album_id, 'monthly');
 
     const artEl = document.querySelector('.debate-album-art');
-    if (artEl && album) artEl.appendChild(buildArtEl(album));
+    if (artEl && album) { artEl.innerHTML = ''; artEl.appendChild(buildArtEl(album)); }
 
     const metaEl = document.querySelector('.debate-album-meta');
     if (metaEl && album) {

@@ -123,7 +123,7 @@
     { "id": "tyler-the-creator-dont-tap-the-glass-2025", "title": "Don't Tap the Glass", "artist": "Tyler, the Creator", "year": 2025, "release_date": "2025-05-23", "genre": ["Hip-Hop", "Rap"], "cover_art_url": "", "catalog_type": "living", "status": "ondeck" },
     { "id": "the-weeknd-hurry-up-tomorrow-2025", "title": "Hurry Up Tomorrow", "artist": "The Weeknd", "year": 2025, "release_date": "2025-01-24", "genre": ["R&B", "Pop"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
     { "id": "lady-gaga-mayhem-2025", "title": "Mayhem", "artist": "Lady Gaga", "year": 2025, "release_date": "2025-03-07", "genre": ["Pop", "Dance"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
-    { "id": "sabrina-carpenter-mans-best-friend-2025", "title": "Man's Best Friend", "artist": "Sabrina Carpenter", "year": 2025, "release_date": "2025-05-09", "genre": ["Pop"], "cover_art_url": "", "catalog_type": "living", "status": "ondeck" },
+    { "id": "sabrina-carpenter-mans-best-friend-2025", "title": "Man's Best Friend", "artist": "Sabrina Carpenter", "year": 2025, "release_date": "2025-05-09", "genre": ["Pop"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
     { "id": "playboi-carti-music-2025", "title": "Music", "artist": "Playboi Carti", "year": 2025, "release_date": "2025-05-16", "genre": ["Hip-Hop", "Trap"], "cover_art_url": "", "catalog_type": "living", "status": "ondeck" },
 
     { "id": "bts-arirang-2026", "title": "Arirang", "artist": "BTS", "year": 2026, "release_date": "2026-04-18", "genre": ["K-Pop", "Pop"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
@@ -135,8 +135,10 @@
     { "id": "robyn-sexistential-2026", "title": "Sexistential", "artist": "Robyn", "year": 2026, "release_date": "2026-05-09", "genre": ["Pop", "Electronic"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
     { "id": "james-blake-trying-times-2026", "title": "Trying Times", "artist": "James Blake", "year": 2026, "release_date": "2026-02-28", "genre": ["Electronic", "Soul"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
     { "id": "gorillaz-the-mountain-2026", "title": "The Mountain", "artist": "Gorillaz", "year": 2026, "release_date": "2026-04-25", "genre": ["Alternative", "Electronic"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
-    { "id": "baby-keem-tbd-2026", "title": "TBD", "artist": "Baby Keem", "year": 2026, "release_date": "2026-07-01", "genre": ["Hip-Hop", "Rap"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
-    { "id": "slayyyter-tbd-2026", "title": "TBD", "artist": "Slayyyter", "year": 2026, "release_date": "2026-07-01", "genre": ["Pop", "Electronic"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
-    { "id": "kacey-musgraves-tbd-2026", "title": "TBD", "artist": "Kacey Musgraves", "year": 2026, "release_date": "2026-07-01", "genre": ["Country", "Pop"], "cover_art_url": "", "catalog_type": "living", "status": "scored" }
+    { "id": "baby-keem-tbd-2026", "title": "TBD", "artist": "Baby Keem", "year": 2026, "release_date": "2026-07-18", "genre": ["Hip-Hop", "Rap"], "cover_art_url": "", "catalog_type": "living", "status": "ondeck" },
+    { "id": "slayyyter-tbd-2026", "title": "TBD", "artist": "Slayyyter", "year": 2026, "release_date": "2026-07-25", "genre": ["Pop", "Electronic"], "cover_art_url": "", "catalog_type": "living", "status": "ondeck" },
+    { "id": "kacey-musgraves-tbd-2026", "title": "TBD", "artist": "Kacey Musgraves", "year": 2026, "release_date": "2026-07-01", "genre": ["Country", "Pop"], "cover_art_url": "", "catalog_type": "living", "status": "scored" },
+    { "id": "billie-eilish-tbd-2026", "title": "TBD", "artist": "Billie Eilish", "year": 2026, "release_date": "2026-08-29", "genre": ["Pop", "Indie Pop"], "cover_art_url": "", "catalog_type": "living", "status": "ondeck" },
+    { "id": "kendrick-lamar-tbd-2026", "title": "TBD", "artist": "Kendrick Lamar", "year": 2026, "release_date": "2026-09-12", "genre": ["Hip-Hop", "Rap"], "cover_art_url": "", "catalog_type": "living", "status": "ondeck" }
   ]
 }

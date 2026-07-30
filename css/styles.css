@@ -850,6 +850,32 @@ body::after {
 }
 
 /* ─── On Deck Page ─── */
+.ondeck-group-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: var(--space-xl) 0 var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+.ondeck-group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.ondeck-date-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  margin-bottom: 2px;
+}
+
 .ondeck-grid {
   position: relative;
   z-index: 1;

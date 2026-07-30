@@ -1,31 +1,31 @@
 {
   "ondeck": [
     {
-      "album_id": "rosalia-lux-2025",
-      "release_date": "2025-05-02",
-      "added_date": "2025-05-02",
-      "outlets_reviewed": 6,
+      "album_id": "kendrick-lamar-tbd-2026",
+      "release_date": "2026-09-12",
+      "added_date": "2026-07-29",
+      "outlets_reviewed": 0,
       "outlets_total": 7
     },
     {
-      "album_id": "tyler-the-creator-dont-tap-the-glass-2025",
-      "release_date": "2025-05-23",
-      "added_date": "2025-05-23",
-      "outlets_reviewed": 6,
+      "album_id": "billie-eilish-tbd-2026",
+      "release_date": "2026-08-29",
+      "added_date": "2026-07-29",
+      "outlets_reviewed": 0,
       "outlets_total": 7
     },
     {
-      "album_id": "sabrina-carpenter-mans-best-friend-2025",
-      "release_date": "2025-05-09",
-      "added_date": "2025-05-09",
-      "outlets_reviewed": 6,
+      "album_id": "slayyyter-tbd-2026",
+      "release_date": "2026-07-25",
+      "added_date": "2026-07-25",
+      "outlets_reviewed": 2,
       "outlets_total": 7
     },
     {
-      "album_id": "playboi-carti-music-2025",
-      "release_date": "2025-05-16",
-      "added_date": "2025-05-16",
-      "outlets_reviewed": 6,
+      "album_id": "baby-keem-tbd-2026",
+      "release_date": "2026-07-18",
+      "added_date": "2026-07-18",
+      "outlets_reviewed": 3,
       "outlets_total": 7
     }
   ]
