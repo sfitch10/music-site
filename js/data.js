@@ -33,12 +33,12 @@ async function _fetchJSON(path) {
 }
 
 async function getMatrix() {
-  const data = await _fetchJSON('matrix.json');
+  const data = await _fetchJSON('data/matrix.json');
   return data;
 }
 
 async function getAllAlbums() {
-  const data = await _fetchJSON('albums.json');
+  const data = await _fetchJSON('data/albums.json');
   return data.albums;
 }
 
@@ -48,7 +48,7 @@ async function getAlbumById(id) {
 }
 
 async function getScores() {
-  const data = await _fetchJSON('scores.json');
+  const data = await _fetchJSON('data/scores.json');
   return data.scores;
 }
 
@@ -74,7 +74,7 @@ async function getAllTimeRankings(limit = 200) {
 }
 
 async function getOnDeckAlbums() {
-  const data = await _fetchJSON('ondeck.json');
+  const data = await _fetchJSON('data/ondeck.json');
   return data.ondeck;
 }
 
@@ -91,7 +91,7 @@ async function getScoredOnDeckAlbums() {
 }
 
 async function getCurrentDebate() {
-  const data = await _fetchJSON('debate.json');
+  const data = await _fetchJSON('data/debate.json');
   return data;
 }
 
