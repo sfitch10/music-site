@@ -33,7 +33,7 @@ let _debateCache = null;
 let _onDeckCache = null;
 
 async function _fetchJSON(path) {
-  const res = await fetch(BASE_PATH + path + '?v=2');
+  const res = await fetch(BASE_PATH + path + '?v=3');
   if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);
   return res.json();
 }
